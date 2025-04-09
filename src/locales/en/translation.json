@@ -1,0 +1,64 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "services": "Services",
+    "products": "Products",
+    "projects": "Projects",
+    "contact": "Contact",
+    "getQuote": "Get a Quote"
+  },
+  "hero": {
+    "title": "Reliable Heating & Cooling Solutions",
+    "subtitle": "Professional HVAC services for homes and businesses across your region.",
+    "cta": "Get a Free Quote"
+  },
+  "services": {
+    "title": "Our Services",
+    "installation": {
+      "title": "Installation",
+      "description": "Professional installation of all HVAC systems"
+    },
+    "repairs": {
+      "title": "Repairs & Maintenance",
+      "description": "Fast and reliable repair services"
+    },
+    "safety": {
+      "title": "Electrical Safety Checks",
+      "description": "Comprehensive safety inspections"
+    }
+  },
+  "about": {
+    "title": "About DAMI AIR",
+    "description": "With over 10 years of experience, DAMI AIR offers custom HVAC solutions backed by licensed technicians and trusted brands."
+  },
+  "featuredServices": {
+    "title": "Featured Services",
+    "splitSystems": "Split Systems",
+    "ductedHeating": "Ducted Heating",
+    "evaporativeCooling": "Evaporative Cooling",
+    "vrvSystems": "VRV Systems",
+    "commercialHvac": "Commercial HVAC"
+  },
+  "whyChooseUs": {
+    "title": "Why Choose Us",
+    "pricing": "Transparent Pricing",
+    "technicians": "Licensed Technicians",
+    "brands": "Trusted Brands",
+    "support": "Responsive Support"
+  },
+  "testimonials": {
+    "title": "What Our Clients Say"
+  },
+  "cta": {
+    "title": "Need HVAC service you can trust?",
+    "button": "Request a Free Quote"
+  },
+  "footer": {
+    "companyName": "DAMI AIR",
+    "contact": "Contact Us",
+    "address": "123 HVAC Street, Your City",
+    "phone": "+1 (555) 123-4567",
+    "email": "info@dami-air.com"
+  }
+} 

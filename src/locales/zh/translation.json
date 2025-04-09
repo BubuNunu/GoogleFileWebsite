@@ -1,0 +1,64 @@
+{
+  "nav": {
+    "home": "首页",
+    "about": "关于我们",
+    "services": "服务",
+    "products": "产品",
+    "projects": "项目",
+    "contact": "联系我们",
+    "getQuote": "获取报价"
+  },
+  "hero": {
+    "title": "可靠的暖通空调解决方案",
+    "subtitle": "为您所在地区的住宅和商业客户提供专业暖通空调服务。",
+    "cta": "免费获取报价"
+  },
+  "services": {
+    "title": "我们的服务",
+    "installation": {
+      "title": "安装服务",
+      "description": "专业安装各类暖通空调系统"
+    },
+    "repairs": {
+      "title": "维修与维护",
+      "description": "快速可靠的维修服务"
+    },
+    "safety": {
+      "title": "电气安全检查",
+      "description": "全面的安全检查"
+    }
+  },
+  "about": {
+    "title": "关于 DAMI AIR",
+    "description": "拥有超过10年的经验，DAMI AIR 提供由专业技术人员和知名品牌支持的定制暖通空调解决方案。"
+  },
+  "featuredServices": {
+    "title": "特色服务",
+    "splitSystems": "分体式系统",
+    "ductedHeating": "管道供暖",
+    "evaporativeCooling": "蒸发冷却",
+    "vrvSystems": "VRV系统",
+    "commercialHvac": "商业暖通空调"
+  },
+  "whyChooseUs": {
+    "title": "为什么选择我们",
+    "pricing": "透明定价",
+    "technicians": "持证技术人员",
+    "brands": "值得信赖的品牌",
+    "support": "快速响应支持"
+  },
+  "testimonials": {
+    "title": "客户评价"
+  },
+  "cta": {
+    "title": "需要值得信赖的暖通空调服务吗？",
+    "button": "免费获取报价"
+  },
+  "footer": {
+    "companyName": "DAMI AIR",
+    "contact": "联系我们",
+    "address": "暖通空调街123号，您的城市",
+    "phone": "+1 (555) 123-4567",
+    "email": "info@dami-air.com"
+  }
+} 
