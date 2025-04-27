@@ -18,6 +18,13 @@ export default defineConfig({
     global: {},
   },
   server: {
-    host: true
+    host: true,
+    proxy: {
+      '/api': {
+        target: 'http://localhost:3000', // This should be your API server address
+        changeOrigin: true,
+        secure: false,
+      },
+    }
   }
 })
