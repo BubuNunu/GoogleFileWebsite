@@ -1,0 +1,43 @@
+{
+  "nav": {
+    "home": "首页",
+    "about": "关于我们",
+    "services": "服务项目",
+    "products": "产品",
+    "contact": "联系我们",
+    "getQuote": "获取报价"
+  },
+  "hero": {
+    "title": "墨尔本专业暖通空调服务",
+    "subtitle": "为您提供专业的安装、维护和维修服务，满足所有供暖和制冷需求",
+    "cta": "获取免费报价"
+  },
+  "services": {
+    "title": "我们的服务",
+    "installation": {
+      "title": "安装服务",
+      "description": "专业安装各类空调系统"
+    },
+    "repairs": {
+      "title": "维修服务",
+      "description": "为所有暖通空调系统提供快速可靠的维修服务"
+    },
+    "safety": {
+      "title": "安全检查",
+      "description": "认证的安全检查和合规性检查"
+    }
+  },
+  "about": {
+    "title": "关于DAMI AIR"
+  },
+  "whyChooseUs": {
+    "title": "为什么选择我们",
+    "pricing": "价格实惠",
+    "technicians": "专业技师",
+    "brands": "优质品牌",
+    "support": "全天候支持"
+  },
+  "footer": {
+    "companyName": "DAMI AIR 有限公司"
+  }
+} 

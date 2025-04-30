@@ -1,0 +1,43 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "services": "Services",
+    "products": "Products",
+    "contact": "Contact",
+    "getQuote": "Get Quote"
+  },
+  "hero": {
+    "title": "Professional HVAC Services in Melbourne",
+    "subtitle": "Expert installation, maintenance, and repair services for all your heating and cooling needs",
+    "cta": "Get Your Free Quote"
+  },
+  "services": {
+    "title": "Our Services",
+    "installation": {
+      "title": "Installation",
+      "description": "Professional installation of all types of air conditioning systems"
+    },
+    "repairs": {
+      "title": "Repairs",
+      "description": "Fast and reliable repair services for all HVAC systems"
+    },
+    "safety": {
+      "title": "Safety",
+      "description": "Certified safety inspections and compliance checks"
+    }
+  },
+  "about": {
+    "title": "About DAMI AIR"
+  },
+  "whyChooseUs": {
+    "title": "Why Choose Us",
+    "pricing": "Competitive Pricing",
+    "technicians": "Expert Technicians",
+    "brands": "Top Quality Brands",
+    "support": "24/7 Support"
+  },
+  "footer": {
+    "companyName": "DAMI AIR PTY LTD"
+  }
+} 

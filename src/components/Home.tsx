@@ -46,6 +46,7 @@ import image3 from '../assets/images/demoPictures/AdobeStock_608345000.jpeg';
 import image4 from '../assets/images/demoPictures/AdobeStock_289084407.jpeg';
 import image5 from '../assets/images/demoPictures/AdobeStock_506341527.jpeg';
 import QuoteDialog from './QuoteDialog';
+import LanguageSwitcher from './LanguageSwitcher';
 
 const images = [image1, image2, image3, image4, image5];
 
@@ -234,6 +235,7 @@ const Home = () => {
               {t('nav.contact')}
             </Button>
           </Box>
+          <Box sx={{ flexGrow: 1 }} />
           <Button 
             color="inherit" 
             variant="outlined" 
@@ -242,9 +244,7 @@ const Home = () => {
           >
             {t('nav.getQuote')}
           </Button>
-          <IconButton color="inherit" onClick={handleLanguageChange}>
-            <Language />
-          </IconButton>
+          <LanguageSwitcher />
         </Toolbar>
       </AppBar>
 
