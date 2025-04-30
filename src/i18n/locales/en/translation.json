@@ -25,19 +25,62 @@
     "safety": {
       "title": "Safety",
       "description": "Certified safety inspections and compliance checks"
-    }
+    },
+    "allServices": "All Services",
+    "installationServices": "Installation Services",
+    "veuProgram": "VEU Program",
+    "maintenance": "Maintenance & Servicing",
+    "repairsTroubleshooting": "Repairs & Troubleshooting"
+  },
+  "products": {
+    "title": "Our Products",
+    "allProducts": "All Products",
+    "vrvSystems": "VRF/VRV Systems",
+    "ductedSystems": "Ducted Systems",
+    "evaporativeCooling": "Evaporative Cooling"
   },
   "about": {
-    "title": "About DAMI AIR"
+    "title": "About DAMI AIR",
+    "description": "At DAMI AIR PTY LTD, we specialise in air conditioning installation, repair, and maintenance for residential and commercial properties across Melbourne. With a skilled team of fully licensed refrigerant handlers, plumbers, and electricians, we deliver safe, efficient, and compliant solutions tailored to your needs. From new builds and renovations to energy-saving upgrades through the Victorian Energy Upgrades (VEU) program, we're committed to quality workmanship and reliable service at competitive prices."
   },
   "whyChooseUs": {
     "title": "Why Choose Us",
     "pricing": "Competitive Pricing",
+    "pricingDescription": "We provide clear, upfront pricing with no hidden costs. Get detailed quotes that break down all costs before any work begins.",
     "technicians": "Expert Technicians",
+    "techniciansDescription": "Our team consists of fully licensed and certified technicians with extensive experience in HVAC systems.",
     "brands": "Top Quality Brands",
-    "support": "24/7 Support"
+    "brandsDescription": "We partner with leading manufacturers to offer you the highest quality equipment and parts available.",
+    "support": "24/7 Support",
+    "supportDescription": "24/7 customer support and rapid response times for all your HVAC needs. We're always here when you need us."
+  },
+  "cta": {
+    "title": "Need Professional HVAC Service?",
+    "subtitle": "Get in touch with us today for a free consultation and quote.",
+    "button": "Get Your Free Quote"
   },
   "footer": {
-    "companyName": "DAMI AIR PTY LTD"
+    "companyName": "DAMI AIR PTY LTD",
+    "companyDescription": "DAMI has over 10 years experience helping Melbourne locals with their plumbing, heating and cooling needs. Top quality products, professional installation and world class customer service.",
+    "featuredServices": "Featured Services",
+    "contactUs": "Contact Us",
+    "openingHours": {
+      "title": "We Open:",
+      "weekdays": "Mon - Fri: 9:00 am - 5:00 pm",
+      "saturday": "Sat: 9:00 am - 12:00 pm",
+      "sunday": "Sun: By Appointment"
+    },
+    "contactInfo": {
+      "mobile": "Mobile: 045 228 7883 (English/Mandarin)",
+      "email": "Email: info@damiair.com.au"
+    }
+  },
+  "featuredServices": {
+    "airConditioning": "Air Conditioning Installation",
+    "veu": "Victorian Energy Upgrades (VEU)",
+    "hvacDesign": "HVAC System Design for New Homes",
+    "renovations": "Air Conditioning for Renovations",
+    "maintenance": "Maintenance & Servicing",
+    "repairs": "HVAC Repairs & Troubleshooting"
   }
 } 

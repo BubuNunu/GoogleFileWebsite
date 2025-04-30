@@ -25,19 +25,62 @@
     "safety": {
       "title": "安全检查",
       "description": "认证的安全检查和合规性检查"
-    }
+    },
+    "allServices": "所有服务",
+    "installationServices": "安装服务",
+    "veuProgram": "维多利亚能源升级计划",
+    "maintenance": "维护与保养",
+    "repairsTroubleshooting": "维修与故障排除"
+  },
+  "products": {
+    "title": "我们的产品",
+    "allProducts": "所有产品",
+    "vrvSystems": "VRF/VRV系统",
+    "ductedSystems": "管道系统",
+    "evaporativeCooling": "蒸发冷却系统"
   },
   "about": {
-    "title": "关于DAMI AIR"
+    "title": "关于DAMI AIR",
+    "description": "DAMI AIR有限公司专业为墨尔本住宅和商业物业提供空调安装、维修和维护服务。我们拥有一支技术精湛的团队，包括完全持证的制冷剂处理人员、水管工和电工，为您提供安全、高效且符合要求的解决方案。从新建和翻新到通过维多利亚能源升级（VEU）计划进行节能升级，我们致力于以具有竞争力的价格提供优质工艺和可靠服务。"
   },
   "whyChooseUs": {
     "title": "为什么选择我们",
     "pricing": "价格实惠",
+    "pricingDescription": "我们提供清晰、透明的价格，无隐藏费用。在开始任何工作之前，您将获得详细列明所有费用的报价。",
     "technicians": "专业技师",
+    "techniciansDescription": "我们的团队由完全持证且经验丰富的暖通空调系统技师组成。",
     "brands": "优质品牌",
-    "support": "全天候支持"
+    "brandsDescription": "我们与领先制造商合作，为您提供最高品质的设备和零件。",
+    "support": "全天候支持",
+    "supportDescription": "为您的所有暖通空调需求提供24/7客户支持和快速响应。我们随时为您服务。"
+  },
+  "cta": {
+    "title": "需要专业暖通空调服务？",
+    "subtitle": "立即联系我们，获取免费咨询和报价。",
+    "button": "获取免费报价"
   },
   "footer": {
-    "companyName": "DAMI AIR 有限公司"
+    "companyName": "DAMI AIR有限公司",
+    "companyDescription": "DAMI拥有超过10年的经验，帮助墨尔本当地居民解决管道、供暖和制冷需求。提供优质产品、专业安装和世界级客户服务。",
+    "featuredServices": "特色服务",
+    "contactUs": "联系我们",
+    "openingHours": {
+      "title": "营业时间：",
+      "weekdays": "周一至周五：上午9:00 - 下午5:00",
+      "saturday": "周六：上午9:00 - 中午12:00",
+      "sunday": "周日：预约服务"
+    },
+    "contactInfo": {
+      "mobile": "手机：045 228 7883（英语/普通话）",
+      "email": "邮箱：info@damiair.com.au"
+    }
+  },
+  "featuredServices": {
+    "airConditioning": "空调安装",
+    "veu": "维多利亚能源升级计划",
+    "hvacDesign": "新住宅暖通空调系统设计",
+    "renovations": "翻新空调安装",
+    "maintenance": "维护与保养",
+    "repairs": "暖通空调维修与故障排除"
   }
 } 

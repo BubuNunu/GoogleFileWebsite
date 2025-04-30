@@ -73,13 +73,6 @@ const Home = () => {
     setProductsAnchorEl(null);
   };
 
-  const handleLanguageChange = () => {
-    const currentLang = localStorage.getItem('language') || 'en';
-    const newLang = currentLang === 'en' ? 'zh' : 'en';
-    localStorage.setItem('language', newLang);
-    window.location.reload();
-  };
-
   const handleQuoteClick = () => {
     setQuoteDialogOpen(true);
   };
@@ -146,35 +139,35 @@ const Home = () => {
                 to="/services"
                 onClick={handleServicesClose}
               >
-                All Services
+                {t('services.allServices')}
               </MenuItem>
               <MenuItem 
                 component={Link} 
                 to="/services#installation"
                 onClick={handleServicesClose}
               >
-                Installation Services
+                {t('services.installationServices')}
               </MenuItem>
               <MenuItem 
                 component={Link} 
                 to="/services#veu"
                 onClick={handleServicesClose}
               >
-                VEU Program
+                {t('services.veuProgram')}
               </MenuItem>
               <MenuItem 
                 component={Link} 
                 to="/services#maintenance"
                 onClick={handleServicesClose}
               >
-                Maintenance & Servicing
+                {t('services.maintenance')}
               </MenuItem>
               <MenuItem 
                 component={Link} 
                 to="/services#repairs"
                 onClick={handleServicesClose}
               >
-                Repairs & Troubleshooting
+                {t('services.repairsTroubleshooting')}
               </MenuItem>
             </Menu>
             <Button
@@ -200,28 +193,28 @@ const Home = () => {
                 to="/products"
                 onClick={handleProductsClose}
               >
-                All Products
+                {t('products.allProducts')}
               </MenuItem>
               <MenuItem 
                 component={Link} 
                 to="/products#vrv"
                 onClick={handleProductsClose}
               >
-                VRF/VRV Systems
+                {t('products.vrvSystems')}
               </MenuItem>
               <MenuItem 
                 component={Link} 
                 to="/products#ducted"
                 onClick={handleProductsClose}
               >
-                Ducted Systems
+                {t('products.ductedSystems')}
               </MenuItem>
               <MenuItem 
                 component={Link} 
                 to="/products#evaporative"
                 onClick={handleProductsClose}
               >
-                Evaporative Cooling
+                {t('products.evaporativeCooling')}
               </MenuItem>
             </Menu>
             <Button
@@ -419,7 +412,7 @@ const Home = () => {
                         {t('about.title')}
                       </Typography>
                       <Typography variant="body1" paragraph sx={{ lineHeight: 1.8 }}>
-                        At DAMI AIR PTY LTD, we specialise in air conditioning installation, repair, and maintenance for residential and commercial properties across Melbourne. With a skilled team of fully licensed refrigerant handlers, plumbers, and electricians, we deliver safe, efficient, and compliant solutions tailored to your needs. From new builds and renovations to energy-saving upgrades through the Victorian Energy Upgrades (VEU) program, we're committed to quality workmanship and reliable service at competitive prices.
+                        {t('about.description')}
                       </Typography>
                     </Grid>
                   </Grid>
@@ -429,16 +422,16 @@ const Home = () => {
               {/* Featured Services */}
               <Container sx={{ py: 4 }}>
                 <Typography variant="h5" component="h2" gutterBottom align="center" sx={{ mb: 3 }}>
-                  Featured Services
+                  {t('footer.featuredServices')}
                 </Typography>
                 <Grid container spacing={2}>
                   {[
-                    { icon: '❄️', title: 'Air Conditioning Installation' },
-                    { icon: '♻️', title: 'Victorian Energy Upgrades (VEU)' },
-                    { icon: '🏠', title: 'HVAC System Design for New Homes' },
-                    { icon: '🛠️', title: 'Air Conditioning for Renovations' },
-                    { icon: '🔧', title: 'Maintenance & Servicing' },
-                    { icon: '⚡', title: 'HVAC Repairs & Troubleshooting' }
+                    { icon: '❄️', title: t('featuredServices.airConditioning') },
+                    { icon: '♻️', title: t('featuredServices.veu') },
+                    { icon: '🏠', title: t('featuredServices.hvacDesign') },
+                    { icon: '🛠️', title: t('featuredServices.renovations') },
+                    { icon: '🔧', title: t('featuredServices.maintenance') },
+                    { icon: '⚡', title: t('featuredServices.repairs') }
                   ].map((service, index) => (
                     <Grid item xs={6} sm={4} md={2} key={index}>
                       <Card sx={{ 
@@ -495,22 +488,22 @@ const Home = () => {
                       { 
                         icon: <MonetizationOn sx={{ fontSize: 40, color: 'primary.main' }} />, 
                         title: t('whyChooseUs.pricing'),
-                        description: "We provide clear, upfront pricing with no hidden costs. Get detailed quotes that break down all costs before any work begins."
+                        description: t('whyChooseUs.pricingDescription')
                       },
                       { 
                         icon: <Engineering sx={{ fontSize: 40, color: 'primary.main' }} />, 
                         title: t('whyChooseUs.technicians'),
-                        description: "Our team consists of fully licensed and certified technicians with extensive experience in HVAC systems."
+                        description: t('whyChooseUs.techniciansDescription')
                       },
                       { 
                         icon: <Stars sx={{ fontSize: 40, color: 'primary.main' }} />, 
                         title: t('whyChooseUs.brands'),
-                        description: "We partner with leading manufacturers to offer you the highest quality equipment and parts available."
+                        description: t('whyChooseUs.brandsDescription')
                       },
                       { 
                         icon: <Support sx={{ fontSize: 40, color: 'primary.main' }} />, 
                         title: t('whyChooseUs.support'),
-                        description: '24/7 customer support and rapid response times for all your HVAC needs. We\'re always here when you need us.'
+                        description: t('whyChooseUs.supportDescription')
                       }
                     ].map((item, index) => (
                       <Grid item xs={12} sm={6} md={3} key={index}>
@@ -572,10 +565,10 @@ const Home = () => {
               {/* CTA Section */}
               <Box sx={{ mt: 8, mb: 8, textAlign: 'center' }}>
                 <Typography variant="h4" component="h2" gutterBottom>
-                  Need Professional HVAC Service?
+                  {t('cta.title')}
                 </Typography>
                 <Typography variant="body1" sx={{ mb: 4, maxWidth: '600px', mx: 'auto' }}>
-                  Get in touch with us today for a free consultation and quote.
+                  {t('cta.subtitle')}
                 </Typography>
                 <Button
                   variant="contained"
@@ -592,7 +585,7 @@ const Home = () => {
                     }
                   }}
                 >
-                  Get Your Free Quote
+                  {t('cta.button')}
                 </Button>
               </Box>
             </>
@@ -614,7 +607,7 @@ const Home = () => {
                   {t('footer.companyName')}
                 </Typography>
                 <Typography variant="body2" sx={{ mb: 3 }}>
-                  DAMI has over 10 years experience helping Melbourne locals with their plumbing, heating and cooling needs. Top quality products, professional installation and world class customer service.
+                  {t('footer.companyDescription')}
                 </Typography>
                 <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
                   <Box
@@ -651,16 +644,16 @@ const Home = () => {
             <Grid item xs={12} md={4}>
               <Box sx={{ px: { md: 4 } }}>
                 <Typography variant="h6" gutterBottom>
-                  Featured Services
+                  {t('footer.featuredServices')}
                 </Typography>
                 <List sx={{ p: 0 }}>
                   {[
-                    'Air Conditioning Installation',
-                    'Victorian Energy Upgrades (VEU)',
-                    'HVAC System Design for New Homes',
-                    'Air Conditioning for Renovations',
-                    'Maintenance & Servicing',
-                    'HVAC Repairs & Troubleshooting'
+                    t('featuredServices.airConditioning'),
+                    t('featuredServices.veu'),
+                    t('featuredServices.hvacDesign'),
+                    t('featuredServices.renovations'),
+                    t('featuredServices.maintenance'),
+                    t('featuredServices.repairs')
                   ].map((service, index) => (
                     <ListItem key={index} sx={{ px: 0, py: 0.5 }}>
                       <Typography variant="body2" color="inherit" sx={{ 
@@ -677,29 +670,29 @@ const Home = () => {
             <Grid item xs={12} md={4}>
               <Box sx={{ pl: { md: 2 } }}>
                 <Typography variant="h6" gutterBottom>
-                  Contact Us
+                  {t('footer.contactUs')}
                 </Typography>
                 <Typography variant="body2" sx={{ 
                   whiteSpace: 'normal',
                   wordWrap: 'break-word'
                 }}>
-                  <strong>We Open:</strong><br />
-                  Mon - Fri: 9:00 am - 5:00 pm<br />
-                  Sat: 9:00 am - 12:00 pm<br />
-                  Sun: By Appointment
+                  <strong>{t('footer.openingHours.title')}</strong><br />
+                  {t('footer.openingHours.weekdays')}<br />
+                  {t('footer.openingHours.saturday')}<br />
+                  {t('footer.openingHours.sunday')}
                 </Typography>
                 <Typography variant="body2" sx={{ 
                   mt: 2,
                   whiteSpace: 'normal',
                   wordWrap: 'break-word'
                 }}>
-                  <strong>Mobile:</strong> 045 228 7883 (English/Mandarin)
+                  <strong>{t('footer.contactInfo.mobile')}</strong>
                 </Typography>
                 <Typography variant="body2" sx={{
                   whiteSpace: 'normal',
                   wordWrap: 'break-word'
                 }}>
-                  <strong>Email:</strong> info@damiair.com.au
+                  <strong>{t('footer.contactInfo.email')}</strong>
                 </Typography>
               </Box>
             </Grid>
