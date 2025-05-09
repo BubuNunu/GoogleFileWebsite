@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Box,
   Container,
@@ -11,7 +11,6 @@ import {
   CardMedia,
   List,
   ListItem,
-  ListItemIcon,
   ListItemText,
   AppBar,
   Toolbar,
@@ -47,6 +46,12 @@ import image4 from '../assets/images/demoPictures/AdobeStock_289084407.jpeg';
 import image5 from '../assets/images/demoPictures/AdobeStock_506341527.jpeg';
 import QuoteDialog from './QuoteDialog';
 import LanguageSwitcher from './LanguageSwitcher';
+import mitsubishiElectricLogo from '../assets/images/Brand Logo/logo-mitsubishi-electric.png';
+import mitsubishiHeavyLogo from '../assets/images/Brand Logo/logo-mitsubishi-heavy-industries.png';
+import hisenseLogo from '../assets/images/Brand Logo/logo-hisense.png';
+import fujitsuLogo from '../assets/images/Brand Logo/logo-fujitsu.png';
+import mideaLogo from '../assets/images/Brand Logo/logo-midea.png';
+import daikinLogo from '../assets/images/Brand Logo/logo-daikin.png';
 
 const images = [image1, image2, image3, image4, image5];
 
@@ -56,6 +61,10 @@ const Home = () => {
   const [quoteDialogOpen, setQuoteDialogOpen] = useState(false);
   const [servicesAnchorEl, setServicesAnchorEl] = useState<null | HTMLElement>(null);
   const [productsAnchorEl, setProductsAnchorEl] = useState<null | HTMLElement>(null);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
 
   const handleServicesClick = (event: React.MouseEvent<HTMLElement>) => {
     setServicesAnchorEl(event.currentTarget);
@@ -67,6 +76,14 @@ const Home = () => {
 
   const handleServicesClose = () => {
     setServicesAnchorEl(null);
+  };
+
+  const handleServicesCloseAndScroll = () => {
+    handleServicesClose();
+    // Wait for navigation to complete
+    setTimeout(() => {
+      window.scrollTo(0, 0);
+    }, 100);
   };
 
   const handleProductsClose = () => {
@@ -91,8 +108,15 @@ const Home = () => {
             src={logo}
             alt="DAMI AIR Logo"
             sx={{
-              height: 40,
-              mr: 2
+              height: 50,
+              mr: 2,
+              p: 0.5,
+              backgroundColor: 'rgba(255, 255, 255, 0.9)',
+              borderRadius: 1,
+              transition: 'transform 0.2s ease-in-out',
+              '&:hover': {
+                transform: 'scale(1.05)',
+              },
             }}
           />
           <Box sx={{ display: { xs: 'none', md: 'flex' }, gap: 2 }}>
@@ -137,37 +161,44 @@ const Home = () => {
               <MenuItem 
                 component={Link} 
                 to="/services"
-                onClick={handleServicesClose}
+                onClick={handleServicesCloseAndScroll}
               >
-                {t('services.allServices')}
-              </MenuItem>
-              <MenuItem 
-                component={Link} 
-                to="/services#installation"
-                onClick={handleServicesClose}
-              >
-                {t('services.installationServices')}
+                {t('featuredServices.airConditioning')}
               </MenuItem>
               <MenuItem 
                 component={Link} 
                 to="/services#veu"
-                onClick={handleServicesClose}
+                onClick={handleServicesCloseAndScroll}
               >
-                {t('services.veuProgram')}
+                {t('featuredServices.veu')}
+              </MenuItem>
+              <MenuItem 
+                component={Link} 
+                to="/services#new-homes"
+                onClick={handleServicesCloseAndScroll}
+              >
+                {t('featuredServices.hvacDesign')}
+              </MenuItem>
+              <MenuItem 
+                component={Link} 
+                to="/services#renovations"
+                onClick={handleServicesCloseAndScroll}
+              >
+                {t('featuredServices.renovations')}
               </MenuItem>
               <MenuItem 
                 component={Link} 
                 to="/services#maintenance"
-                onClick={handleServicesClose}
+                onClick={handleServicesCloseAndScroll}
               >
-                {t('services.maintenance')}
+                {t('featuredServices.maintenance')}
               </MenuItem>
               <MenuItem 
                 component={Link} 
                 to="/services#repairs"
-                onClick={handleServicesClose}
+                onClick={handleServicesCloseAndScroll}
               >
-                {t('services.repairsTroubleshooting')}
+                {t('featuredServices.repairs')}
               </MenuItem>
             </Menu>
             <Button
@@ -188,33 +219,26 @@ const Home = () => {
                 'aria-labelledby': 'products-button',
               }}
             >
-              <MenuItem 
-                component={Link} 
-                to="/products"
-                onClick={handleProductsClose}
-              >
-                {t('products.allProducts')}
-              </MenuItem>
-              <MenuItem 
-                component={Link} 
+              <MenuItem
+                component={Link}
                 to="/products#vrv"
                 onClick={handleProductsClose}
               >
-                {t('products.vrvSystems')}
+                {t('products.systems.vrv.title')}
               </MenuItem>
-              <MenuItem 
-                component={Link} 
+              <MenuItem
+                component={Link}
                 to="/products#ducted"
                 onClick={handleProductsClose}
               >
-                {t('products.ductedSystems')}
+                {t('products.systems.ducted.title')}
               </MenuItem>
-              <MenuItem 
-                component={Link} 
+              <MenuItem
+                component={Link}
                 to="/products#evaporative"
                 onClick={handleProductsClose}
               >
-                {t('products.evaporativeCooling')}
+                {t('products.systems.evaporative.title')}
               </MenuItem>
             </Menu>
             <Button
@@ -360,6 +384,82 @@ const Home = () => {
                 ))}
               </Carousel>
 
+              {/* Brands Section - Moved here, right below the hero */}
+              <Box sx={{ bgcolor: 'grey.50', py: 6 }}>
+                <Container maxWidth="lg">
+                  <Typography 
+                    variant="h4" 
+                    component="h2" 
+                    gutterBottom 
+                    align="center"
+                    sx={{ mb: 3 }}
+                  >
+                    {t('brands.title')}
+                  </Typography>
+                  <Typography 
+                    variant="body1" 
+                    align="center" 
+                    sx={{ 
+                      mb: 5,
+                      maxWidth: '800px',
+                      mx: 'auto'
+                    }}
+                  >
+                    {t('brands.description')}
+                  </Typography>
+                  <Grid 
+                    container 
+                    spacing={4} 
+                    justifyContent="center" 
+                    alignItems="center"
+                    sx={{
+                      '& img': {
+                        opacity: 0.9,
+                        transition: 'all 0.3s ease-in-out',
+                        '&:hover': {
+                          opacity: 1,
+                          transform: 'scale(1.05)'
+                        }
+                      }
+                    }}
+                  >
+                    {[
+                      { logo: mitsubishiElectricLogo, alt: 'Mitsubishi Electric' },
+                      { logo: mitsubishiHeavyLogo, alt: 'Mitsubishi Heavy Industries' },
+                      { logo: hisenseLogo, alt: 'Hisense' },
+                      { logo: fujitsuLogo, alt: 'Fujitsu' },
+                      { logo: mideaLogo, alt: 'Midea' },
+                      { logo: daikinLogo, alt: 'Daikin' },
+                    ].map((brand, index) => (
+                      <Grid 
+                        item 
+                        xs={6} 
+                        sm={4} 
+                        md={2} 
+                        key={index}
+                        sx={{
+                          display: 'flex',
+                          justifyContent: 'center',
+                          alignItems: 'center'
+                        }}
+                      >
+                        <Box
+                          component="img"
+                          src={brand.logo}
+                          alt={brand.alt}
+                          sx={{
+                            maxWidth: '100%',
+                            height: 'auto',
+                            maxHeight: '60px',
+                            objectFit: 'contain'
+                          }}
+                        />
+                      </Grid>
+                    ))}
+                  </Grid>
+                </Container>
+              </Box>
+
               {/* Quick Services Section */}
               <Container maxWidth="lg" sx={{ py: 8, width: '100%' }}>
                 <Typography variant="h4" component="h2" gutterBottom align="center" sx={{ mb: 6 }}>
@@ -393,27 +493,47 @@ const Home = () => {
               {/* About Section */}
               <Box sx={{ bgcolor: 'grey.100', py: 8 }}>
                 <Container>
-                  <Grid container spacing={4} alignItems="center">
-                    <Grid sx={{ width: { xs: '100%', md: '50%' } }}>
-                      <CardMedia
-                        component="img"
-                        image={logo}
-                        alt="DAMI AIR Logo"
-                        sx={{ 
-                          borderRadius: 1,
-                          maxHeight: 400,
-                          objectFit: 'contain',
-                          p: 4
-                        }}
-                      />
+                  <Grid container spacing={6} alignItems="center">
+                    <Grid item xs={12} md={4}>
+                      <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+                        <CardMedia
+                          component="img"
+                          image={logo}
+                          alt="DAMI AIR Logo"
+                          sx={{ 
+                            borderRadius: 4,
+                            maxHeight: 220,
+                            maxWidth: '100%',
+                            objectFit: 'contain',
+                            p: 3,
+                            backgroundColor: 'white',
+                            boxShadow: '0 4px 12px rgba(0, 0, 0, 0.12)',
+                            transition: 'all 0.3s ease-in-out',
+                            '&:hover': {
+                              boxShadow: '0 8px 20px rgba(0, 0, 0, 0.15)',
+                              transform: 'translateY(-3px)'
+                            }
+                          }}
+                        />
+                      </Box>
                     </Grid>
-                    <Grid sx={{ width: { xs: '100%', md: '50%' } }}>
+                    <Grid item xs={12} md={8}>
                       <Typography variant="h4" component="h2" gutterBottom>
                         {t('about.title')}
                       </Typography>
-                      <Typography variant="body1" paragraph sx={{ lineHeight: 1.8 }}>
+                      <Typography variant="body1" paragraph sx={{ lineHeight: 1.7, mb: 3 }}>
                         {t('about.description')}
                       </Typography>
+                      <Button 
+                        variant="outlined" 
+                        color="primary"
+                        component={Link}
+                        to="/about"
+                        sx={{ mt: 1 }}
+                        onClick={() => window.scrollTo(0, 0)}
+                      >
+                        {t('about.learnMore', 'Learn More')}
+                      </Button>
                     </Grid>
                   </Grid>
                 </Container>
@@ -611,31 +731,53 @@ const Home = () => {
                 </Typography>
                 <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
                   <Box
-                    component="img"
-                    src={arcLogo}
-                    alt="ARC License Logo"
                     sx={{ 
-                      width: '200px',
-                      height: '60px',
-                      objectFit: 'cover',
+                      width: '100%',
+                      maxWidth: '200px',
+                      height: '70px',
                       backgroundColor: 'white',
-                      padding: '4px',
-                      borderRadius: '4px',
-                      transform: 'scale(1.2)'
+                      padding: '8px',
+                      borderRadius: '8px',
+                      boxShadow: '0 4px 12px rgba(0, 0, 0, 0.2)',
+                      transition: 'all 0.3s ease',
+                      display: 'flex',
+                      justifyContent: 'center',
+                      alignItems: 'center',
+                      '&:hover': {
+                        transform: 'scale(1.05)',
+                        boxShadow: '0 6px 16px rgba(0, 0, 0, 0.25)'
+                      }
                     }}
-                  />
+                  >
+                    <Box
+                      component="img"
+                      src={arcLogo}
+                      alt="ARC License Logo"
+                      sx={{ 
+                        width: '100%',
+                        height: '100%',
+                        maxHeight: '100%',
+                      }}
+                    />
+                  </Box>
                   <Box
                     component="img"
                     src={vbaLogo}
                     alt="VBA License Logo"
                     sx={{ 
-                      width: '200px',
-                      height: '60px',
-                      objectFit: 'cover',
+                      width: '100%',
+                      maxWidth: '200px',
+                      height: '70px',
+                      objectFit: 'contain',
                       backgroundColor: 'white',
-                      padding: '4px',
-                      borderRadius: '4px',
-                      transform: 'scale(1.2)'
+                      padding: '8px',
+                      borderRadius: '8px',
+                      boxShadow: '0 4px 12px rgba(0, 0, 0, 0.2)',
+                      transition: 'all 0.3s ease',
+                      '&:hover': {
+                        transform: 'scale(1.05)',
+                        boxShadow: '0 6px 16px rgba(0, 0, 0, 0.25)'
+                      }
                     }}
                   />
                 </Box>

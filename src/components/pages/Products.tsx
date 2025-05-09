@@ -17,51 +17,56 @@ import {
   Search,
   ArrowForward
 } from '@mui/icons-material';
+import { useTranslation } from 'react-i18next';
+import { useLocation } from 'react-router-dom';
 
 interface ProductsProps {
   onQuoteClick: () => void;
 }
 
 const Products: React.FC<ProductsProps> = ({ onQuoteClick }) => {
+  const { t } = useTranslation();
+  const location = useLocation();
+
   useEffect(() => {
-    // Get the hash from the URL (e.g., #vrv)
-    const hash = window.location.hash;
+    // Get the hash from the location object
+    const hash = location.hash;
     if (hash) {
       // Remove the # symbol
       const id = hash.replace('#', '');
       const element = document.getElementById(id);
       if (element) {
-        // Add a small delay to ensure smooth scrolling after page load
+        // Add a small delay to ensure smooth scrolling after page load/hash change
         setTimeout(() => {
           element.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }, 100);
       }
     }
-  }, []);
+  }, [location.hash]);
 
   const products = [
     {
       id: 'vrv',
       icon: <Architecture sx={{ fontSize: 40, color: 'primary.main' }} />,
-      title: 'VRF / VRV / Multi-Head Systems',
-      subtitle: '(VEU-Eligible)',
-      bestFor: 'Homes or units with multiple rooms to cool, where ductwork isn\'t practical',
-      description: 'Connect several indoor units to a single outdoor compressor to individually control temperatures in each room. Great for existing homes, renovations, double storey homes or properties with limited roof space.',
-      bonus: 'These systems are eligible for VEU rebates, making them a smart investment for energy-conscious homeowners.'
+      title: t('products.systems.vrv.title'),
+      subtitle: t('products.systems.vrv.subtitle'),
+      bestFor: t('products.systems.vrv.bestFor'),
+      description: t('products.systems.vrv.description'),
+      bonus: t('products.systems.vrv.bonus')
     },
     {
       id: 'ducted',
       icon: <AcUnit sx={{ fontSize: 40, color: 'primary.main' }} />,
-      title: 'Ducted Air Conditioning Systems',
-      bestFor: 'Whole-home comfort in new builds or major renovations',
-      description: 'Discreet, powerful cooling and heating delivered through ceiling or floor ducts. Perfect for homeowners wanting seamless climate control throughout the entire property with minimal visual impact.'
+      title: t('products.systems.ducted.title'),
+      bestFor: t('products.systems.ducted.bestFor'),
+      description: t('products.systems.ducted.description')
     },
     {
       id: 'evaporative',
       icon: <Opacity sx={{ fontSize: 40, color: 'primary.main' }} />,
-      title: 'Evaporative Cooling Systems',
-      bestFor: 'Dry climates, larger open-plan homes',
-      description: 'A cost-effective, eco-friendly solution that uses water to cool air naturally. Ideal for families looking for fresh airflow and low running costs in Victoria\'s drier seasons.'
+      title: t('products.systems.evaporative.title'),
+      bestFor: t('products.systems.evaporative.bestFor'),
+      description: t('products.systems.evaporative.description')
     }
   ];
 
@@ -92,7 +97,7 @@ const Products: React.FC<ProductsProps> = ({ onQuoteClick }) => {
               }
             }}
           >
-            Our Air Conditioning System Range
+            {t('products.title')}
           </Typography>
           <Typography 
             variant="h6" 
@@ -104,7 +109,7 @@ const Products: React.FC<ProductsProps> = ({ onQuoteClick }) => {
               lineHeight: 1.8
             }}
           >
-            At DAMI AIR PTY LTD, we offer a range of modern air conditioning systems designed to suit different property types, energy needs, and budgets. Whether you're upgrading an old heater, building a new home, or working on a commercial project, we can help you choose the right system — and where eligible, help you access rebates through the Victorian Energy Upgrades (VEU) program.
+            {t('products.subtitle')}
           </Typography>
         </Box>
 
@@ -116,7 +121,6 @@ const Products: React.FC<ProductsProps> = ({ onQuoteClick }) => {
                 id={product.id}
                 sx={{ 
                   height: '100%',
-                  scrollMarginTop: '100px', // Add space for the fixed header
                   transition: 'transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out',
                   '&:hover': {
                     transform: 'translateY(-4px)',
@@ -156,47 +160,31 @@ const Products: React.FC<ProductsProps> = ({ onQuoteClick }) => {
                         {product.description}
                       </Typography>
                       {product.bonus && (
-                        <Paper 
+                        <Typography 
+                          variant="body1" 
                           sx={{ 
-                            p: 2, 
+                            mt: 2,
+                            p: 2,
                             bgcolor: 'primary.light',
                             color: 'primary.contrastText',
-                            mt: 2
+                            borderRadius: 1
                           }}
                         >
-                          <Typography variant="body1">
-                            <strong>Bonus:</strong> {product.bonus}
-                          </Typography>
-                        </Paper>
+                          {product.bonus}
+                        </Typography>
                       )}
                     </Grid>
-                    <Grid item xs={12} md={4}>
-                      <Box 
-                        sx={{ 
-                          height: '100%',
-                          display: 'flex',
-                          flexDirection: 'column',
-                          justifyContent: 'center',
-                          alignItems: 'center',
-                          p: 3,
-                          bgcolor: 'grey.50',
-                          borderRadius: 1
-                        }}
+                    <Grid item xs={12} md={4} sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                      <Button
+                        variant="contained"
+                        color="primary"
+                        size="large"
+                        onClick={onQuoteClick}
+                        endIcon={<ArrowForward />}
+                        sx={{ width: '100%', maxWidth: 300 }}
                       >
-                        <Button
-                          variant="contained"
-                          color="primary"
-                          size="large"
-                          onClick={onQuoteClick}
-                          endIcon={<ArrowForward />}
-                          sx={{ 
-                            width: '100%',
-                            py: 1.5
-                          }}
-                        >
-                          Get a Quote
-                        </Button>
-                      </Box>
+                        {t('nav.getQuote')}
+                      </Button>
                     </Grid>
                   </Grid>
                 </CardContent>
@@ -229,7 +217,7 @@ const Products: React.FC<ProductsProps> = ({ onQuoteClick }) => {
             }}
           />
           <Typography variant="h4" component="h2" gutterBottom>
-            Not Sure Which System is Right for You?
+            {t('products.cta.title')}
           </Typography>
           <Typography 
             variant="body1" 
@@ -239,7 +227,7 @@ const Products: React.FC<ProductsProps> = ({ onQuoteClick }) => {
               mb: 4
             }}
           >
-            Our licensed specialists will assess your layout, lifestyle, and energy goals to recommend the ideal system — and help you take advantage of any available VEU rebates to reduce your installation cost.
+            {t('products.cta.description')}
           </Typography>
           <Button
             variant="contained"
@@ -253,7 +241,7 @@ const Products: React.FC<ProductsProps> = ({ onQuoteClick }) => {
               fontSize: '1.1rem'
             }}
           >
-            Request a Free Consultation
+            {t('products.cta.button')}
           </Button>
         </Box>
       </Container>

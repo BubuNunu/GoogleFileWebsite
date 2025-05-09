@@ -8,6 +8,12 @@
     "contact": "联系我们",
     "getQuote": "获取报价"
   },
+  "products": {
+    "allProducts": "所有产品",
+    "vrvSystems": "VRV系统",
+    "ductedSystems": "管道系统",
+    "evaporativeCooling": "蒸发式冷却"
+  },
   "hero": {
     "title": "可靠的暖通空调解决方案",
     "subtitle": "为您所在地区的住宅和商业客户提供专业暖通空调服务。",
@@ -16,49 +22,309 @@
   "services": {
     "title": "我们的服务",
     "installation": {
-      "title": "安装服务",
-      "description": "专业安装各类暖通空调系统"
+      "title": "空调安装服务",
+      "description": "我们提供专业的空调系统安装服务，包括管道系统、VRV/VRF系统和分体式空调，确保高效和持久的性能。",
+      "features": {
+        "title": "主要特点",
+        "list": [
+          "专业持证技师安装",
+          "支持所有主要品牌",
+          "定制系统设计",
+          "能效优化",
+          "完整保修覆盖"
+        ]
+      },
+      "benefits": {
+        "title": "服务优势",
+        "list": [
+          "改善室内舒适度",
+          "降低能源账单",
+          "提升空气质量",
+          "提高房产价值",
+          "专业安装保障"
+        ]
+      },
+      "timeline": "根据系统复杂程度需要1-3天",
+      "priceRange": "起价2,000澳元",
+      "includes": {
+        "title": "服务包含",
+        "list": [
+          "初步咨询和现场评估",
+          "系统设计和建议",
+          "专业安装",
+          "测试和调试",
+          "保修文件",
+          "用户培训"
+        ]
+      }
+    },
+    "maintenance": {
+      "title": "维护保养服务",
+      "description": "通过定期维护延长您的空调系统使用寿命。我们提供常规维护服务，确保系统平稳运行。",
+      "features": {
+        "title": "主要特点",
+        "list": [
+          "定期维护计划",
+          "全面系统检查",
+          "过滤器清洁和更换",
+          "性能优化",
+          "预防性维护"
+        ]
+      },
+      "benefits": {
+        "title": "服务优势",
+        "list": [
+          "延长系统寿命",
+          "提高运行效率",
+          "降低故障风险",
+          "保持保修有效性",
+          "改善空气质量"
+        ]
+      },
+      "timeline": "每次服务2-3小时",
+      "priceRange": "每次服务起价150澳元",
+      "includes": {
+        "title": "服务包含",
+        "list": [
+          "系统检查",
+          "过滤器清洁/更换",
+          "盘管清洁",
+          "性能测试",
+          "书面报告",
+          "维护建议"
+        ]
+      }
     },
     "repairs": {
-      "title": "维修与维护",
-      "description": "快速可靠的维修服务"
+      "title": "维修服务",
+      "description": "为故障空调和暖通系统提供快速可靠的维修服务。我们的技术人员能够快速诊断和解决问题。",
+      "features": {
+        "title": "主要特点",
+        "list": [
+          "紧急维修服务",
+          "维修所有品牌",
+          "使用原厂配件",
+          "专业故障诊断",
+          "维修后测试"
+        ]
+      },
+      "benefits": {
+        "title": "服务优势",
+        "list": [
+          "快速响应时间",
+          "专业维修",
+          "系统可靠性",
+          "延长设备寿命",
+          "安心保障"
+        ]
+      },
+      "timeline": "提供当天服务",
+      "priceRange": "服务费用起价120澳元",
+      "includes": {
+        "title": "服务包含",
+        "list": [
+          "故障诊断评估",
+          "维修报价",
+          "专业维修",
+          "测试和验证",
+          "维修保修",
+          "维护建议"
+        ]
+      }
     },
-    "safety": {
-      "title": "电气安全检查",
-      "description": "全面的安全检查"
+    "veu": {
+      "title": "维多利亚能源升级计划",
+      "description": "作为完全合格的团队，我们帮助客户从燃气供暖过渡到节能电力系统，并协助获取VEU回扣。",
+      "features": {
+        "title": "主要特点",
+        "list": [
+          "VEU回扣评估",
+          "能效升级",
+          "完整回扣管理",
+          "合规文件",
+          "专家指导"
+        ]
+      },
+      "benefits": {
+        "title": "服务优势",
+        "list": [
+          "降低升级成本",
+          "节省能源",
+          "环境影响",
+          "现代化设备",
+          "政府合规"
+        ]
+      },
+      "timeline": "包括回扣处理需要2-4周",
+      "priceRange": "根据回扣资格而定",
+      "includes": {
+        "title": "服务包含",
+        "list": [
+          "初步评估",
+          "回扣计算",
+          "系统建议",
+          "安装服务",
+          "回扣申请",
+          "文件准备"
+        ]
+      }
+    },
+    "newHomes": {
+      "title": "新房空调设计",
+      "description": "我们与建筑商和开发商合作，设计定制的现代供暖和制冷系统，以适应新建筑的布局和能源需求。",
+      "features": {
+        "title": "主要特点",
+        "list": [
+          "定制系统设计",
+          "能源建模",
+          "集成规划",
+          "面向未来的解决方案",
+          "建筑商协调"
+        ]
+      },
+      "benefits": {
+        "title": "服务优势",
+        "list": [
+          "最佳舒适度设计",
+          "能源效率",
+          "现代技术",
+          "集成解决方案",
+          "长期可靠性"
+        ]
+      },
+      "timeline": "与建筑进度同步",
+      "priceRange": "根据设计定制报价",
+      "includes": {
+        "title": "服务包含",
+        "list": [
+          "设计咨询",
+          "负荷计算",
+          "系统规格",
+          "安装规划",
+          "建筑商联络",
+          "项目管理"
+        ]
+      }
     }
+  },
+  "common": {
+    "getQuote": "获取报价",
+    "keyFeatures": "主要特点",
+    "benefits": "服务优势",
+    "timeline": "时间",
+    "price": "价格",
+    "whatsIncluded": "服务包含"
   },
   "about": {
     "title": "关于 DAMI AIR",
-    "description": "拥有超过10年的经验，DAMI AIR 提供由专业技术人员和知名品牌支持的定制暖通空调解决方案。"
+    "description": "拥有超过10年的经验，DAMI AIR 提供由专业技术人员和知名品牌支持的定制暖通空调解决方案。",
+    "team": {
+      "title": "我们的专业团队",
+      "intro": "在 DAMI AIR PTY LTD，我们的优势在于我们的团队。我们是一支由完全合格且持证的制冷剂处理人员、水管工和电工组成的团队，致力于为墨尔本提供安全、合规且高质量的空调解决方案。",
+      "experience": "我们的团队在住宅、翻新和新建筑项目中拥有多年的实践经验。我们致力于安全、效率和客户满意度，我们的技术人员定期接受培训，以跟上最新的行业标准和能效实践。",
+      "capabilities": "从新安装到复杂的能源升级和暖通空调维护，我们的技术人员为每个项目带来多年的实践经验、技术知识和细致入微的关注。我们根据澳大利亚法规获得许可，并在住宅、翻新和新建筑项目方面拥有丰富经验。"
+    }
   },
   "featuredServices": {
-    "title": "特色服务",
-    "splitSystems": "分体式系统",
-    "ductedHeating": "管道供暖",
-    "evaporativeCooling": "蒸发冷却",
-    "vrvSystems": "VRV系统",
-    "commercialHvac": "商业暖通空调"
+    "airConditioning": "空调系统",
+    "veu": "VEU节能计划",
+    "hvacDesign": "暖通空调设计",
+    "renovations": "翻新改造",
+    "maintenance": "维护保养",
+    "repairs": "维修服务"
   },
   "whyChooseUs": {
     "title": "为什么选择我们",
     "pricing": "透明定价",
+    "pricingDescription": "所有服务均提供具有竞争力的价格和明确的前期报价",
     "technicians": "持证技术人员",
+    "techniciansDescription": "完全合格且持证的专业人员",
     "brands": "值得信赖的品牌",
-    "support": "快速响应支持"
+    "brandsDescription": "我们与领先的暖通空调制造商合作",
+    "support": "快速响应支持",
+    "supportDescription": "24/7客户支持和快速响应时间"
   },
   "testimonials": {
     "title": "客户评价"
   },
   "cta": {
     "title": "需要值得信赖的暖通空调服务吗？",
+    "subtitle": "立即联系我们，获取专业的暖通空调解决方案，为您量身定制。",
     "button": "免费获取报价"
   },
   "footer": {
     "companyName": "DAMI AIR",
+    "companyDescription": "DAMI AIR 是您值得信赖的暖通空调解决方案提供商。拥有超过10年的经验，我们在墨尔本提供专业的暖通空调服务，由持证技术人员提供优质的工艺支持。",
     "contact": "联系我们",
+    "contactUs": "联系我们",
     "address": "暖通空调街123号，您的城市",
     "phone": "+1 (555) 123-4567",
-    "email": "info@dami-air.com"
+    "email": "info@dami-air.com",
+    "featuredServices": "特色服务",
+    "openingHours": {
+      "title": "营业时间",
+      "weekdays": "周一至周五：上午8:00 - 下午6:00",
+      "saturday": "周六：上午9:00 - 下午4:00",
+      "sunday": "周日：休息"
+    },
+    "contactInfo": {
+      "mobile": "0412 345 678",
+      "email": "info@dami-air.com"
+    }
+  },
+  "quoteDialog": {
+    "title": "获取报价",
+    "name": {
+      "label": "姓名",
+      "helper": "请输入您的全名"
+    },
+    "email": {
+      "label": "电子邮箱",
+      "helper": "我们将通过此邮箱发送报价给您"
+    },
+    "phone": {
+      "label": "电话号码",
+      "helper": "请输入10位手机号码（例如：0412345678）"
+    },
+    "serviceType": {
+      "label": "服务类型",
+      "helper": "请选择您感兴趣的服务类型",
+      "options": {
+        "veu": "维多利亚能源升级计划 (VEU)",
+        "installation": "安装服务",
+        "maintenance": "维护保养",
+        "repair": "维修服务"
+      }
+    },
+    "postcode": {
+      "label": "物业邮编",
+      "helper": "请输入您墨尔本物业的邮编（3000-3999）"
+    },
+    "message": {
+      "label": "我们如何帮助您？",
+      "helper": "可选：提供任何关于您需求的额外详细信息"
+    },
+    "buttons": {
+      "cancel": "取消",
+      "submit": "提交"
+    },
+    "success": "报价请求提交成功！",
+    "errors": {
+      "name": "请输入姓名",
+      "email": {
+        "required": "请输入电子邮箱",
+        "invalid": "邮箱格式不正确"
+      },
+      "phone": {
+        "required": "请输入电话号码",
+        "invalid": "电话号码格式不正确"
+      },
+      "serviceType": "请选择服务类型",
+      "postcode": {
+        "required": "请输入邮编",
+        "invalid": "请输入有效的墨尔本邮编（3000-3999）"
+      },
+      "submit": "提交报价请求失败，请稍后重试。"
+    }
   }
 } 

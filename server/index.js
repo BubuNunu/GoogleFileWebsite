@@ -18,112 +18,228 @@ const port = 3000;
 app.use(cors());
 app.use(express.json());
 
-// Verify required environment variables
-const requiredEnvVars = ['SMTP_HOST', 'SMTP_PORT', 'SMTP_USER', 'SMTP_PASSWORD'];
-const missingEnvVars = requiredEnvVars.filter(envVar => !process.env[envVar]);
+// Verify if any mail config is available
+const smtpConfigAvailable = process.env.SMTP_HOST && 
+                            process.env.SMTP_PORT && 
+                            process.env.SMTP_USER && 
+                            process.env.SMTP_PASSWORD;
 
-if (missingEnvVars.length > 0) {
-  console.error('\n❌ ERROR: Missing required environment variables:', missingEnvVars);
-  console.error('Please update your .env.local file with actual values\n');
-  process.exit(1); // Exit if environment variables are not properly set
+const gmailConfigAvailable = process.env.GMAIL_USER && 
+                             process.env.GMAIL_PASSWORD;
+
+console.log('\n=================================');
+console.log(`✅ Server running at http://localhost:${port}`);
+console.log('=================================\n');
+
+// Try to set up email transport based on available config
+let transporter;
+let emailConfigValid = false;
+let configMessage = '';
+
+// Try SMTP Configuration first
+if (smtpConfigAvailable) {
+  try {
+    console.log('Attempting to use SMTP configuration:');
+    console.log('- SMTP_HOST:', process.env.SMTP_HOST);
+    console.log('- SMTP_PORT:', process.env.SMTP_PORT);
+    console.log('- SMTP_USER:', process.env.SMTP_USER);
+    console.log('- SMTP_PASSWORD:', '****');
+
+    transporter = nodemailer.createTransport({
+      host: process.env.SMTP_HOST,
+      port: Number(process.env.SMTP_PORT),
+      secure: process.env.SMTP_PORT === '465',
+      auth: {
+        user: process.env.SMTP_USER,
+        pass: process.env.SMTP_PASSWORD,
+      },
+      tls: {
+        rejectUnauthorized: false // Only for testing - remove in production
+      }
+    });
+    
+    // Will be set to true if verification succeeds
+    emailConfigValid = false;
+    configMessage = 'Using SMTP configuration';
+  } catch (error) {
+    console.error('Error setting up SMTP transport:', error);
+  }
+} 
+
+// Try Gmail as fallback
+if (!emailConfigValid && gmailConfigAvailable) {
+  try {
+    console.log('\nAttempting to use Gmail configuration:');
+    console.log('- GMAIL_USER:', process.env.GMAIL_USER);
+    console.log('- GMAIL_PASSWORD:', '****');
+
+    transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        user: process.env.GMAIL_USER,
+        pass: process.env.GMAIL_PASSWORD,
+      }
+    });
+    
+    // Will be set to true if verification succeeds
+    emailConfigValid = false;
+    configMessage = 'Using Gmail configuration';
+  } catch (error) {
+    console.error('Error setting up Gmail transport:', error);
+  }
 }
 
-// Check if environment variables still have placeholder values
-if (process.env.SMTP_USER.includes('your-email') || 
-    process.env.SMTP_PASSWORD.includes('your-app-specific-password')) {
-  console.error('\n❌ ERROR: Please replace the placeholder values in .env.local with your actual Gmail credentials');
-  console.error('Current values are still the default placeholders\n');
-  process.exit(1);
+// If no valid configuration, provide instructions
+if (!transporter) {
+  console.error('\n❌ No valid email configuration found');
+  console.log('\n==========================================================');
+  console.log('IMPORTANT: To fix this issue, create a .env.local file with:');
+  console.log('==========================================================');
+  console.log('Option 1 - SMTP Configuration:');
+  console.log('SMTP_HOST=smtp.gmail.com');
+  console.log('SMTP_PORT=465');
+  console.log('SMTP_USER=your-email@gmail.com');
+  console.log('SMTP_PASSWORD=your-app-password');
+  console.log('\nOR\n');
+  console.log('Option 2 - Gmail Configuration:');
+  console.log('GMAIL_USER=your-email@gmail.com');
+  console.log('GMAIL_PASSWORD=your-app-password');
+  console.log('==========================================================');
+  console.log('For Gmail, you must use an App Password (requires 2FA)');
+  console.log('==========================================================\n');
+  
+  // Create emergency transporter for logging only
+  transporter = {
+    sendMail: (mailOptions) => {
+      console.log('EMAIL WOULD BE SENT (but no valid config):');
+      console.log(mailOptions);
+      return Promise.resolve({ messageId: 'dummy-id' });
+    },
+    verify: (callback) => {
+      callback(null, false);
+    }
+  };
+} else {
+  // Verify SMTP connection
+  transporter.verify(function(error, success) {
+    if (error) {
+      console.error('\n❌ Email connection error:', error);
+      console.error('Please check your email credentials and settings\n');
+      
+      // Log helpful instructions
+      console.log('\n==========================================================');
+      console.log('RECOMMENDATION: Try Gmail SMTP as a fallback');
+      console.log('==========================================================');
+      console.log('Update your .env.local file with:');
+      console.log('SMTP_HOST=smtp.gmail.com');
+      console.log('SMTP_PORT=465');
+      console.log('SMTP_USER=your-gmail@gmail.com');
+      console.log('SMTP_PASSWORD=your-app-password');
+      console.log('==========================================================');
+      console.log('For Gmail, you must use an App Password (requires 2FA)');
+      console.log('==========================================================\n');
+      
+      emailConfigValid = false;
+    } else {
+      console.log('\n✅ Email server is connected and ready');
+      emailConfigValid = true;
+    }
+  });
 }
-
-// Configure nodemailer with more detailed options
-const transporter = nodemailer.createTransport({
-  host: process.env.SMTP_HOST,
-  port: Number(process.env.SMTP_PORT),
-  secure: process.env.SMTP_PORT === '465', // true for 465, false for other ports
-  auth: {
-    user: process.env.SMTP_USER,
-    pass: process.env.SMTP_PASSWORD,
-  },
-  tls: {
-    rejectUnauthorized: false // For testing purposes - remove in production
-  }
-});
-
-// Verify SMTP connection on startup
-transporter.verify(function(error, success) {
-  if (error) {
-    console.error('\n❌ SMTP connection error:', error);
-    console.error('Please check your email credentials and settings\n');
-    process.exit(1);
-  } else {
-    console.log('\n✅ SMTP server is ready to take messages');
-  }
-});
 
 // Quote submission endpoint
 app.post('/api/submit-quote', async (req, res) => {
   try {
     const { name, email, phone, serviceType, postcode, message } = req.body;
 
-    console.log('Attempting to send email with data:', {
-      name,
-      email,
-      phone,
-      serviceType,
-      postcode,
-      messageLength: message ? message.length : 0
-    });
+    console.log('Received quote submission from:', email);
+    
+    if (!emailConfigValid) {
+      console.log('⚠️ Email config invalid - logging submission only:');
+      console.log({ name, email, phone, serviceType, postcode, messageLength: message?.length || 0 });
+      
+      // Return success for testing, but log warning
+      console.log('⚠️ WARNING: No email sent - returning mock success response');
+      return res.status(200).json({ 
+        message: 'Quote logged (email not sent - configuration issue)',
+        configStatus: 'invalid'
+      });
+    }
+
+    // Format service type for display
+    const serviceTypeDisplay = serviceType.includes('featuredServices.') 
+      ? serviceType.replace('featuredServices.', '') 
+      : serviceType;
 
     // Send email
     const mailOptions = {
-      from: process.env.SMTP_USER,
+      from: process.env.SMTP_USER || process.env.GMAIL_USER,
       to: 'info@damiair.com.au',
-      subject: 'New Quote Request',
+      replyTo: email,
+      subject: `New Quote Request - ${serviceTypeDisplay}`,
       html: `
         <h2>New Quote Request</h2>
         <p><strong>Name:</strong> ${name}</p>
         <p><strong>Email:</strong> ${email}</p>
         <p><strong>Phone:</strong> ${phone}</p>
-        <p><strong>Service Type:</strong> ${serviceType}</p>
+        <p><strong>Service Type:</strong> ${serviceTypeDisplay}</p>
         <p><strong>Postcode:</strong> ${postcode}</p>
         <p><strong>Message:</strong> ${message || 'No additional message provided.'}</p>
       `,
     };
 
     const info = await transporter.sendMail(mailOptions);
-    console.log('Email sent successfully:', info.messageId);
+    console.log('✅ Quote email sent successfully:', info.messageId);
 
-    res.status(200).json({ message: 'Quote request submitted successfully' });
+    // Send confirmation email to customer
+    const confirmationOptions = {
+      from: process.env.SMTP_USER || process.env.GMAIL_USER,
+      to: email,
+      subject: 'Your Quote Request - Dami Air',
+      html: `
+        <h2>Thank you for your quote request!</h2>
+        <p>Dear ${name},</p>
+        <p>We have received your quote request for ${serviceTypeDisplay} services.</p>
+        <p>Our team will review your request and get back to you shortly.</p>
+        <p>If you have any urgent questions, please contact us at info@damiair.com.au or by phone.</p>
+        <p>Best regards,<br>Dami Air Team</p>
+      `,
+    };
+
+    try {
+      await transporter.sendMail(confirmationOptions);
+      console.log('✅ Confirmation email sent to customer:', email);
+    } catch (error) {
+      console.error('⚠️ Unable to send confirmation email to customer:', error);
+      // Continue with success response even if confirmation fails
+    }
+
+    res.status(200).json({ 
+      message: 'Quote request submitted successfully',
+      configStatus: 'valid'
+    });
   } catch (error) {
-    console.error('Detailed error when sending email:', {
+    console.error('Error processing quote request:', {
       errorName: error.name,
       errorMessage: error.message,
-      errorStack: error.stack
+      stack: error.stack
     });
     
     let errorMessage = 'Failed to submit quote request';
     if (error.code === 'EAUTH') {
       errorMessage = 'Email authentication failed. Please check SMTP credentials.';
-    } else if (error.code === 'ESOCKET') {
+    } else if (error.code === 'ESOCKET' || error.code === 'EDNS') {
       errorMessage = 'Failed to connect to email server. Please check SMTP settings.';
     }
     
     res.status(500).json({ 
       message: errorMessage,
-      error: error.message 
+      error: error.message,
+      configStatus: emailConfigValid ? 'valid' : 'invalid'
     });
   }
 });
 
 app.listen(port, () => {
-  console.log('\n=================================');
-  console.log(`✅ Server running at http://localhost:${port}`);
-  console.log('=================================\n');
-  console.log('Environment variables loaded:');
-  console.log('- SMTP_HOST:', process.env.SMTP_HOST);
-  console.log('- SMTP_PORT:', process.env.SMTP_PORT);
-  console.log('- SMTP_USER:', process.env.SMTP_USER);
-  console.log('- SMTP_PASSWORD:', '****');
-  console.log('\n');
+  // Server info already logged above
 }); 

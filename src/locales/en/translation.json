@@ -8,6 +8,12 @@
     "contact": "Contact",
     "getQuote": "Get a Quote"
   },
+  "products": {
+    "allProducts": "All Products",
+    "vrvSystems": "VRV Systems",
+    "ductedSystems": "Ducted Systems",
+    "evaporativeCooling": "Evaporative Cooling"
+  },
   "hero": {
     "title": "Reliable Heating & Cooling Solutions",
     "subtitle": "Professional HVAC services for homes and businesses across your region.",
@@ -30,35 +36,114 @@
   },
   "about": {
     "title": "About DAMI AIR",
-    "description": "With over 10 years of experience, DAMI AIR offers custom HVAC solutions backed by licensed technicians and trusted brands."
+    "description": "With over 10 years of experience, DAMI AIR offers custom HVAC solutions backed by licensed technicians and trusted brands.",
+    "team": {
+      "title": "Our Expert Team",
+      "intro": "At DAMI AIR PTY LTD, our strength lies in our people. We're a team of fully qualified and licensed refrigerant handlers, plumbers, and electricians, committed to delivering safe, compliant, and high-quality air conditioning solutions across Melbourne.",
+      "experience": "Our team brings years of hands-on experience across residential, renovation, and new build projects. We are dedicated to safety, efficiency, and customer satisfaction, and our technicians are regularly trained to stay up-to-date with the latest industry standards and energy efficiency practices.",
+      "capabilities": "From new installations to complex energy upgrades and HVAC servicing, our technicians bring years of hands-on experience, technical knowledge, and attention to detail to every project. We are licensed in accordance with Australian regulations and experienced across residential, renovation, and new build projects."
+    }
   },
   "featuredServices": {
-    "title": "Featured Services",
-    "splitSystems": "Split Systems",
-    "ductedHeating": "Ducted Heating",
-    "evaporativeCooling": "Evaporative Cooling",
-    "vrvSystems": "VRV Systems",
-    "commercialHvac": "Commercial HVAC"
+    "airConditioning": "Air Conditioning",
+    "veu": "VEU Program",
+    "hvacDesign": "HVAC Design",
+    "renovations": "Renovations",
+    "maintenance": "Maintenance",
+    "repairs": "Repairs"
   },
   "whyChooseUs": {
     "title": "Why Choose Us",
     "pricing": "Transparent Pricing",
+    "pricingDescription": "Competitive rates and clear upfront pricing for all our services",
     "technicians": "Licensed Technicians",
+    "techniciansDescription": "Fully qualified and licensed professionals",
     "brands": "Trusted Brands",
-    "support": "Responsive Support"
+    "brandsDescription": "We work with leading HVAC manufacturers",
+    "support": "Responsive Support",
+    "supportDescription": "24/7 customer support and rapid response times"
   },
   "testimonials": {
     "title": "What Our Clients Say"
   },
   "cta": {
     "title": "Need HVAC service you can trust?",
+    "subtitle": "Contact us today for professional heating and cooling solutions tailored to your needs.",
     "button": "Request a Free Quote"
   },
   "footer": {
     "companyName": "DAMI AIR",
+    "companyDescription": "DAMI AIR is your trusted provider of heating and cooling solutions. With over 10 years of experience, we deliver professional HVAC services across Melbourne, backed by licensed technicians and quality workmanship.",
     "contact": "Contact Us",
+    "contactUs": "Contact Us",
     "address": "123 HVAC Street, Your City",
     "phone": "+1 (555) 123-4567",
-    "email": "info@dami-air.com"
+    "email": "info@dami-air.com",
+    "featuredServices": "Featured Services",
+    "openingHours": {
+      "title": "Opening Hours",
+      "weekdays": "Monday - Friday: 8:00 AM - 6:00 PM",
+      "saturday": "Saturday: 9:00 AM - 4:00 PM",
+      "sunday": "Sunday: Closed"
+    },
+    "contactInfo": {
+      "mobile": "0412 345 678",
+      "email": "info@dami-air.com"
+    }
+  },
+  "quoteDialog": {
+    "title": "Request a Quote",
+    "name": {
+      "label": "Name",
+      "helper": "Please enter your full name"
+    },
+    "email": {
+      "label": "Email",
+      "helper": "We'll use this email to send you the quote"
+    },
+    "phone": {
+      "label": "Phone Number",
+      "helper": "Enter a 10-digit mobile number (e.g., 0412345678)"
+    },
+    "serviceType": {
+      "label": "Service Type",
+      "helper": "Select the type of service you're interested in",
+      "options": {
+        "veu": "Victorian Energy Upgrades (VEU)",
+        "installation": "Installation",
+        "maintenance": "Service and maintenance",
+        "repair": "Repair"
+      }
+    },
+    "postcode": {
+      "label": "Property Postcode",
+      "helper": "Enter your Melbourne property postcode (3000-3999)"
+    },
+    "message": {
+      "label": "How can we help?",
+      "helper": "Optional: Provide any additional details about your requirements"
+    },
+    "buttons": {
+      "cancel": "Cancel",
+      "submit": "Submit"
+    },
+    "success": "Quote request submitted successfully!",
+    "errors": {
+      "name": "Name is required",
+      "email": {
+        "required": "Email is required",
+        "invalid": "Invalid email format"
+      },
+      "phone": {
+        "required": "Phone number is required",
+        "invalid": "Invalid phone number format"
+      },
+      "serviceType": "Service type is required",
+      "postcode": {
+        "required": "Postcode is required",
+        "invalid": "Please enter a valid Melbourne postcode (3000-3999)"
+      },
+      "submit": "Failed to submit quote request. Please try again later."
+    }
   }
 } 

@@ -33,15 +33,62 @@
     "repairsTroubleshooting": "Repairs & Troubleshooting"
   },
   "products": {
-    "title": "Our Products",
-    "allProducts": "All Products",
-    "vrvSystems": "VRF/VRV Systems",
-    "ductedSystems": "Ducted Systems",
-    "evaporativeCooling": "Evaporative Cooling"
+    "title": "Our Air Conditioning System Range",
+    "subtitle": "At DAMI AIR PTY LTD, we offer a range of modern air conditioning systems designed to suit different property types, energy needs, and budgets. Whether you're upgrading an old heater, building a new home, or working on a commercial project, we can help you choose the right system — and where eligible, help you access rebates through the Victorian Energy Upgrades (VEU) program.",
+    "systems": {
+      "vrv": {
+        "title": "VRF / VRV / Multi-Head Systems",
+        "subtitle": "(VEU-Eligible)",
+        "bestFor": "Homes or units with multiple rooms to cool, where ductwork isn't practical",
+        "description": "Connect several indoor units to a single outdoor compressor to individually control temperatures in each room. Great for existing homes, renovations, double storey homes or properties with limited roof space.",
+        "bonus": "These systems are eligible for VEU rebates, making them a smart investment for energy-conscious homeowners."
+      },
+      "ducted": {
+        "title": "Ducted Air Conditioning Systems",
+        "bestFor": "Whole-home comfort in new builds or major renovations",
+        "description": "Discreet, powerful cooling and heating delivered through ceiling or floor ducts. Perfect for homeowners wanting seamless climate control throughout the entire property with minimal visual impact."
+      },
+      "evaporative": {
+        "title": "Evaporative Cooling Systems",
+        "bestFor": "Dry climates, larger open-plan homes",
+        "description": "A cost-effective, eco-friendly solution that uses water to cool air naturally. Ideal for families looking for fresh airflow and low running costs in Victoria's drier seasons."
+      }
+    },
+    "cta": {
+      "title": "Not Sure Which System is Right for You?",
+      "description": "Our licensed specialists will assess your layout, lifestyle, and energy goals to recommend the ideal system — and help you take advantage of any available VEU rebates to reduce your installation cost.",
+      "button": "Request a Free Consultation"
+    }
   },
   "about": {
     "title": "About DAMI AIR",
-    "description": "At DAMI AIR PTY LTD, we specialise in air conditioning installation, repair, and maintenance for residential and commercial properties across Melbourne. With a skilled team of fully licensed refrigerant handlers, plumbers, and electricians, we deliver safe, efficient, and compliant solutions tailored to your needs. From new builds and renovations to energy-saving upgrades through the Victorian Energy Upgrades (VEU) program, we're committed to quality workmanship and reliable service at competitive prices."
+    "description": "At DAMI AIR PTY LTD, we specialise in air conditioning installation, repair, and maintenance for residential and commercial properties across Melbourne. With a skilled team of fully licensed refrigerant handlers, plumbers, and electricians, we deliver safe, efficient, and compliant solutions tailored to your needs. From new builds and renovations to energy-saving upgrades through the Victorian Energy Upgrades (VEU) program, we're committed to quality workmanship and reliable service at competitive prices.",
+    "team": {
+      "title": "Meet Our Expert Team",
+      "intro": "At DAMI AIR PTY LTD, our strength lies in our people. We're a team of fully qualified and licensed refrigerant handlers, plumbers, and electricians, committed to delivering safe, compliant, and high-quality air conditioning solutions across Melbourne.",
+      "experience": "From new installations to complex energy upgrades and HVAC servicing, our technicians bring years of hands-on experience, technical knowledge, and attention to detail to every project.",
+      "capabilities": {
+        "title": "Our Team Capabilities",
+        "items": [
+          "Licensed in accordance with Australian regulations",
+          "Experienced across residential, renovation, and new build projects",
+          "Dedicated to safety, efficiency, and customer satisfaction",
+          "Regularly trained to stay up-to-date with the latest industry standards and energy efficiency practices"
+        ]
+      },
+      "licenses": {
+        "title": "Licensed & Accredited",
+        "intro": "We are proudly registered with the following industry bodies:",
+        "arc": {
+          "name": "ARC Refrigerant Handling Licence",
+          "number": "AU53326"
+        },
+        "vba": {
+          "name": "VBA (Victorian Building Authority) Licence",
+          "number": "122395"
+        }
+      }
+    }
   },
   "whyChooseUs": {
     "title": "Why Choose Us",
@@ -82,5 +129,97 @@
     "renovations": "Air Conditioning for Renovations",
     "maintenance": "Maintenance & Servicing",
     "repairs": "HVAC Repairs & Troubleshooting"
+  },
+  "contact": {
+    "title": "Contact Us",
+    "openingHours": "Opening Hours",
+    "hours": {
+      "weekdays": "Monday - Friday: 8:00 AM - 6:00 PM",
+      "saturday": "Saturday: 9:00 AM - 4:00 PM",
+      "sunday": "Sunday: Closed"
+    },
+    "contactInfo": "Contact Information",
+    "phone": "0412 345 678",
+    "email": "info@dami-air.com"
+  },
+  "projects": {
+    "title": "Our Recent Projects",
+    "project1": {
+      "title": "Modern Home HVAC Installation",
+      "description": "Complete ducted system installation for a new double-storey home in Melbourne's eastern suburbs."
+    },
+    "project2": {
+      "title": "Multi-Split VRV Upgrade",
+      "description": "Energy-efficient VRV system installation for a heritage apartment building, preserving its historic character."
+    },
+    "project3": {
+      "title": "Commercial Office Retrofit",
+      "description": "Large-scale HVAC upgrade for a 3-story office building, improving energy efficiency and comfort."
+    },
+    "project4": {
+      "title": "Residential VEU Program",
+      "description": "Multiple residential upgrades under the Victorian Energy Upgrades program, reducing energy costs."
+    },
+    "project5": {
+      "title": "Evaporative Cooling Solution",
+      "description": "Installation of eco-friendly evaporative cooling system for a large family home."
+    },
+    "project6": {
+      "title": "Smart Climate Control",
+      "description": "Integration of smart climate control systems across multiple zones in a luxury residence."
+    }
+  },
+  "brands": {
+    "title": "Brands We Install",
+    "description": "At DAMI AIR PTY LTD, we supply and install all major brands, allowing us to offer customised options that balance comfort, design, budget and long-term performance."
+  },
+  "quoteDialog": {
+    "title": "Request a Quote",
+    "name": {
+      "label": "Name",
+      "helper": "Please enter your full name"
+    },
+    "email": {
+      "label": "Email",
+      "helper": "We'll use this email to send you the quote"
+    },
+    "phone": {
+      "label": "Phone Number",
+      "helper": "Enter a 10-digit mobile number (e.g., 0412345678)"
+    },
+    "serviceType": {
+      "label": "Service Type",
+      "helper": "Select the type of service you're interested in"
+    },
+    "postcode": {
+      "label": "Property Postcode",
+      "helper": "Enter your Melbourne property postcode (3000-3999)"
+    },
+    "message": {
+      "label": "How can we help?",
+      "helper": "Optional: Provide any additional details about your requirements"
+    },
+    "buttons": {
+      "cancel": "Cancel",
+      "submit": "Submit"
+    },
+    "success": "Quote request submitted successfully!",
+    "errors": {
+      "name": "Name is required",
+      "email": {
+        "required": "Email is required",
+        "invalid": "Invalid email format"
+      },
+      "phone": {
+        "required": "Phone number is required",
+        "invalid": "Invalid phone number format"
+      },
+      "serviceType": "Service type is required",
+      "postcode": {
+        "required": "Postcode is required",
+        "invalid": "Please enter a valid Melbourne postcode (3000-3999)"
+      },
+      "submit": "Failed to submit quote request. Please try again later."
+    }
   }
 } 

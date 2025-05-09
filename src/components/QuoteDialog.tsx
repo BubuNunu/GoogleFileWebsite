@@ -19,10 +19,10 @@ interface QuoteDialogProps {
 }
 
 const serviceTypes = [
-  'Victorian Energy Upgrades (VEU)',
-  'Installation',
-  'Service and maintenance',
-  'Repair'
+  'featuredServices.airConditioning',
+  'featuredServices.veu',
+  'featuredServices.maintenance',
+  'featuredServices.repairs'
 ];
 
 const QuoteDialog: React.FC<QuoteDialogProps> = ({ open, onClose }) => {
@@ -38,33 +38,35 @@ const QuoteDialog: React.FC<QuoteDialogProps> = ({ open, onClose }) => {
   });
   const [errors, setErrors] = useState<Record<string, string>>({});
 
+  const translatedServiceTypes = serviceTypes.map(key => t(key));
+
   const validateForm = () => {
     const newErrors: Record<string, string> = {};
     
     if (!formData.name.trim()) {
-      newErrors.name = 'Name is required';
+      newErrors.name = t('quoteDialog.errors.name');
     }
     
     if (!formData.email.trim()) {
-      newErrors.email = 'Email is required';
+      newErrors.email = t('quoteDialog.errors.email.required');
     } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      newErrors.email = 'Invalid email format';
+      newErrors.email = t('quoteDialog.errors.email.invalid');
     }
     
     if (!formData.phone.trim()) {
-      newErrors.phone = 'Phone number is required';
+      newErrors.phone = t('quoteDialog.errors.phone.required');
     } else if (!/^\d{10}$/.test(formData.phone.replace(/\D/g, ''))) {
-      newErrors.phone = 'Invalid phone number format';
+      newErrors.phone = t('quoteDialog.errors.phone.invalid');
     }
     
     if (!formData.serviceType) {
-      newErrors.serviceType = 'Service type is required';
+      newErrors.serviceType = t('quoteDialog.errors.serviceType');
     }
     
     if (!formData.postcode.trim()) {
-      newErrors.postcode = 'Postcode is required';
+      newErrors.postcode = t('quoteDialog.errors.postcode.required');
     } else if (!/^3\d{3}$/.test(formData.postcode)) {
-      newErrors.postcode = 'Please enter a valid Melbourne postcode (3000-3999)';
+      newErrors.postcode = t('quoteDialog.errors.postcode.invalid');
     }
 
     setErrors(newErrors);
@@ -79,7 +81,14 @@ const QuoteDialog: React.FC<QuoteDialogProps> = ({ open, onClose }) => {
     }
 
     try {
-      const response = await fetch('/api/submit-quote', {
+      // Show loading indicator or disable submit button here if needed
+      
+      // Make sure the API URL is properly formed for both development and production
+      const apiUrl = process.env.NODE_ENV === 'production' 
+        ? '/api/submit-quote' 
+        : 'http://localhost:3000/api/submit-quote';
+      
+      const response = await fetch(apiUrl, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -87,8 +96,10 @@ const QuoteDialog: React.FC<QuoteDialogProps> = ({ open, onClose }) => {
         body: JSON.stringify(formData)
       });
 
+      const data = await response.json();
+      
       if (!response.ok) {
-        throw new Error('Failed to submit quote request');
+        throw new Error(data.message || 'Failed to submit quote request');
       }
 
       setSnackbarOpen(true);
@@ -105,7 +116,7 @@ const QuoteDialog: React.FC<QuoteDialogProps> = ({ open, onClose }) => {
       console.error('Error submitting form:', error);
       setErrors(prev => ({
         ...prev,
-        submit: 'Failed to submit quote request. Please try again later.'
+        submit: error instanceof Error ? error.message : 'Failed to submit quote request. Please try again later.'
       }));
     }
   };
@@ -128,84 +139,89 @@ const QuoteDialog: React.FC<QuoteDialogProps> = ({ open, onClose }) => {
   return (
     <>
       <Dialog open={open} onClose={onClose} maxWidth="sm" fullWidth>
-        <DialogTitle>Request a Quote</DialogTitle>
+        <DialogTitle>{t('quoteDialog.title')}</DialogTitle>
         <form onSubmit={handleSubmit}>
           <DialogContent>
             <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+              {errors.submit && (
+                <Alert severity="error" sx={{ mb: 2 }}>
+                  {errors.submit}
+                </Alert>
+              )}
               <TextField
                 required
-                label="Name"
+                label={t('quoteDialog.name.label')}
                 name="name"
                 value={formData.name}
                 onChange={handleChange}
                 error={!!errors.name}
-                helperText={errors.name || "Please enter your full name"}
+                helperText={errors.name || t('quoteDialog.name.helper')}
                 fullWidth
               />
               <TextField
                 required
-                label="Email"
+                label={t('quoteDialog.email.label')}
                 name="email"
                 type="email"
                 value={formData.email}
                 onChange={handleChange}
                 error={!!errors.email}
-                helperText={errors.email || "We'll use this email to send you the quote"}
+                helperText={errors.email || t('quoteDialog.email.helper')}
                 fullWidth
               />
               <TextField
                 required
-                label="Phone Number"
+                label={t('quoteDialog.phone.label')}
                 name="phone"
                 value={formData.phone}
                 onChange={handleChange}
                 error={!!errors.phone}
-                helperText={errors.phone || "Enter a 10-digit mobile number (e.g., 0412345678)"}
+                helperText={errors.phone || t('quoteDialog.phone.helper')}
                 fullWidth
               />
               <TextField
                 required
                 select
-                label="Service Type"
+                label={t('quoteDialog.serviceType.label')}
                 name="serviceType"
                 value={formData.serviceType}
                 onChange={handleChange}
                 error={!!errors.serviceType}
-                helperText={errors.serviceType || "Select the type of service you're interested in"}
+                helperText={errors.serviceType || t('quoteDialog.serviceType.helper')}
                 fullWidth
               >
-                {serviceTypes.map((option) => (
-                  <MenuItem key={option} value={option}>
+                {translatedServiceTypes.map((option, index) => (
+                  <MenuItem key={serviceTypes[index]} value={serviceTypes[index]}>
                     {option}
                   </MenuItem>
                 ))}
               </TextField>
               <TextField
                 required
-                label="Property Postcode"
+                label={t('quoteDialog.postcode.label')}
                 name="postcode"
                 value={formData.postcode}
                 onChange={handleChange}
                 error={!!errors.postcode}
-                helperText={errors.postcode || "Enter your Melbourne property postcode (3000-3999)"}
+                helperText={errors.postcode || t('quoteDialog.postcode.helper')}
                 fullWidth
               />
               <TextField
-                label="How can we help?"
+                label={t('quoteDialog.message.label')}
                 name="message"
                 multiline
                 rows={4}
                 value={formData.message}
                 onChange={handleChange}
-                helperText="Optional: Provide any additional details about your requirements"
+                helperText={t('quoteDialog.message.helper')}
                 fullWidth
               />
             </Box>
           </DialogContent>
           <DialogActions>
-            <Button onClick={onClose}>Cancel</Button>
+            <Button onClick={onClose}>{t('quoteDialog.buttons.cancel')}</Button>
             <Button type="submit" variant="contained" color="primary">
-              Submit
+              {t('quoteDialog.buttons.submit')}
             </Button>
           </DialogActions>
         </form>
@@ -216,7 +232,7 @@ const QuoteDialog: React.FC<QuoteDialogProps> = ({ open, onClose }) => {
         onClose={() => setSnackbarOpen(false)}
       >
         <Alert severity="success" onClose={() => setSnackbarOpen(false)}>
-          Quote request submitted successfully!
+          {t('quoteDialog.success')}
         </Alert>
       </Snackbar>
     </>
