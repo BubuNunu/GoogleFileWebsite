@@ -3,8 +3,8 @@ import { useTranslation } from 'react-i18next';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import BuildIcon from '@mui/icons-material/Build';
 import VerifiedIcon from '@mui/icons-material/Verified';
-import arcLogo from '../../assets/images/licence logo/licence - australian-refrigeration-council-arc-logo-vector.svg';
-import vbaLogo from '../../assets/images/licence logo/licence - VBA.png';
+import arcLogo from '../../assets/images/Licence logo/licence - australian-refrigeration-council-arc-logo-vector.svg';
+import vbaLogo from '../../assets/images/Licence logo/licence - VBA.png';
 
 const About = () => {
   const { t } = useTranslation();
