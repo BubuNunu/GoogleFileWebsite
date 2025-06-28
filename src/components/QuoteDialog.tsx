@@ -9,7 +9,8 @@ import {
   MenuItem,
   Box,
   Alert,
-  Snackbar
+  Snackbar,
+  CircularProgress
 } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 
@@ -28,6 +29,7 @@ const serviceTypes = [
 const QuoteDialog: React.FC<QuoteDialogProps> = ({ open, onClose }) => {
   const { t } = useTranslation();
   const [snackbarOpen, setSnackbarOpen] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -80,9 +82,10 @@ const QuoteDialog: React.FC<QuoteDialogProps> = ({ open, onClose }) => {
       return;
     }
 
+    setIsSubmitting(true);
+    setErrors({}); // Clear any previous errors
+
     try {
-      // Show loading indicator or disable submit button here if needed
-      
       // Make sure the API URL is properly formed for both development and production
       const apiUrl = process.env.NODE_ENV === 'production' 
         ? '/api/submit-quote' 
@@ -102,7 +105,10 @@ const QuoteDialog: React.FC<QuoteDialogProps> = ({ open, onClose }) => {
         throw new Error(data.message || 'Failed to submit quote request');
       }
 
+      // Show success notification
       setSnackbarOpen(true);
+      
+      // Reset form
       setFormData({
         name: '',
         email: '',
@@ -111,13 +117,20 @@ const QuoteDialog: React.FC<QuoteDialogProps> = ({ open, onClose }) => {
         postcode: '',
         message: ''
       });
-      onClose();
+      
+      // Close dialog after a short delay to show the success message
+      setTimeout(() => {
+        onClose();
+      }, 1000);
+      
     } catch (error) {
       console.error('Error submitting form:', error);
       setErrors(prev => ({
         ...prev,
         submit: error instanceof Error ? error.message : 'Failed to submit quote request. Please try again later.'
       }));
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -219,19 +232,48 @@ const QuoteDialog: React.FC<QuoteDialogProps> = ({ open, onClose }) => {
             </Box>
           </DialogContent>
           <DialogActions>
-            <Button onClick={onClose}>{t('quoteDialog.buttons.cancel')}</Button>
-            <Button type="submit" variant="contained" color="primary">
-              {t('quoteDialog.buttons.submit')}
+            <Button onClick={onClose} disabled={isSubmitting}>
+              {t('quoteDialog.buttons.cancel')}
+            </Button>
+            <Button 
+              type="submit" 
+              variant="contained" 
+              color="primary"
+              disabled={isSubmitting}
+              startIcon={isSubmitting ? <CircularProgress size={20} color="inherit" /> : null}
+            >
+              {isSubmitting ? t('quoteDialog.buttons.submitting') : t('quoteDialog.buttons.submit')}
             </Button>
           </DialogActions>
         </form>
       </Dialog>
       <Snackbar
         open={snackbarOpen}
-        autoHideDuration={6000}
+        autoHideDuration={8000}
         onClose={() => setSnackbarOpen(false)}
+        anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+        sx={{
+          '& .MuiAlert-root': {
+            fontSize: '1rem',
+            padding: '12px 16px',
+            minWidth: '300px'
+          }
+        }}
       >
-        <Alert severity="success" onClose={() => setSnackbarOpen(false)}>
+        <Alert 
+          severity="success" 
+          onClose={() => setSnackbarOpen(false)}
+          sx={{
+            width: '100%',
+            '& .MuiAlert-icon': {
+              fontSize: '1.5rem'
+            },
+            '& .MuiAlert-message': {
+              fontSize: '1rem',
+              fontWeight: 500
+            }
+          }}
+        >
           {t('quoteDialog.success')}
         </Alert>
       </Snackbar>

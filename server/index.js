@@ -195,14 +195,39 @@ app.post('/api/submit-quote', async (req, res) => {
     const confirmationOptions = {
       from: process.env.SMTP_USER || process.env.GMAIL_USER,
       to: email,
-      subject: 'Your Quote Request - Dami Air',
+      subject: "We've Received Your Request – DAMI AIR PTY LTD",
       html: `
-        <h2>Thank you for your quote request!</h2>
-        <p>Dear ${name},</p>
-        <p>We have received your quote request for ${serviceTypeDisplay} services.</p>
-        <p>Our team will review your request and get back to you shortly.</p>
-        <p>If you have any urgent questions, please contact us at info@damiair.com.au or by phone.</p>
-        <p>Best regards,<br>Dami Air Team</p>
+        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
+          <h2 style="color: #333;">Hi ${name.split(' ')[0]},</h2>
+          
+          <p>Thanks for reaching out to <strong>DAMI AIR PTY LTD</strong>!</p>
+          
+          <p>We've received your enquiry, and one of our team members will review the details and get back to you soon. If your request is urgent, feel free to contact us directly at <strong>045 228 7883</strong>.</p>
+          
+          <div style="background-color: #f5f5f5; padding: 20px; border-radius: 8px; margin: 20px 0;">
+            <h3 style="margin-top: 0; color: #333;">Request Summary:</h3>
+            <p><strong>Name:</strong> ${name}</p>
+            <p><strong>Service Type:</strong> ${serviceTypeDisplay}</p>
+            <p><strong>Property Postcode:</strong> ${postcode || 'Not provided'}</p>
+            <p><strong>Additional Notes:</strong> ${message || 'No additional notes provided'}</p>
+          </div>
+          
+          <p>We look forward to helping you with your air conditioning and HVAC needs — whether it's a new installation, energy upgrade, or a quick repair.</p>
+          
+          <div style="margin-top: 30px; padding-top: 20px; border-top: 2px solid #eee;">
+            <p style="margin-bottom: 5px;"><strong>Kind regards,</strong></p>
+            <p style="margin-bottom: 5px;"><strong>The DAMI AIR Team</strong></p>
+            <p style="margin-bottom: 5px; color: #666;">Heating and Cooling Experts</p>
+            <p style="margin-bottom: 5px;">📞 0451028668</p>
+            <p style="margin-bottom: 5px;">✉️ info@damiair.com.au</p>
+          </div>
+          
+          <div style="text-align: center; margin-top: 30px;">
+            <img src="https://damiair.com.au/wp-content/uploads/2024/01/FullLogo_Transparent_NoBuffer_NoSlogan.png" 
+                 alt="DAMI AIR Logo" 
+                 style="max-width: 200px; height: auto;">
+          </div>
+        </div>
       `,
     };
 

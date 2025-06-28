@@ -103,22 +103,25 @@ const Home = () => {
       {/* Header/Navbar */}
       <AppBar position="static">
         <Toolbar>
-          <Box
-            component="img"
-            src={logo}
-            alt="DAMI AIR Logo"
-            sx={{
-              height: 50,
-              mr: 2,
-              p: 0.5,
-              backgroundColor: 'rgba(255, 255, 255, 0.9)',
-              borderRadius: 1,
-              transition: 'transform 0.2s ease-in-out',
-              '&:hover': {
-                transform: 'scale(1.05)',
-              },
-            }}
-          />
+          <Link to="/" style={{ textDecoration: 'none' }}>
+            <Box
+              component="img"
+              src={logo}
+              alt="DAMI AIR Logo"
+              sx={{
+                height: 50,
+                mr: 2,
+                p: 0.5,
+                backgroundColor: 'rgba(255, 255, 255, 0.9)',
+                borderRadius: 1,
+                transition: 'transform 0.2s ease-in-out',
+                cursor: 'pointer',
+                '&:hover': {
+                  transform: 'scale(1.05)',
+                },
+              }}
+            />
+          </Link>
           <Box sx={{ display: { xs: 'none', md: 'flex' }, gap: 2 }}>
             <Button
               color="inherit"

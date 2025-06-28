@@ -10,7 +10,7 @@ const App = () => {
   return (
     <Suspense fallback={<div>Loading translations...</div>}>
       <I18nextProvider i18n={i18n}>
-        <BrowserRouter>
+        <BrowserRouter basename="/GoogleFileWebsite">
           <ThemeProvider theme={theme}>
             <CssBaseline />
             <div style={{ width: '100%', minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>

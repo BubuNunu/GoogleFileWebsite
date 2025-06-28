@@ -201,7 +201,8 @@
     },
     "buttons": {
       "cancel": "Cancel",
-      "submit": "Submit"
+      "submit": "Submit",
+      "submitting": "Submitting..."
     },
     "success": "Quote request submitted successfully!",
     "errors": {

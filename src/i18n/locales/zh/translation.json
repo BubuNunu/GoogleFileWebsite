@@ -201,7 +201,8 @@
     },
     "buttons": {
       "cancel": "取消",
-      "submit": "提交"
+      "submit": "提交",
+      "submitting": "提交中..."
     },
     "success": "报价请求提交成功！",
     "errors": {
