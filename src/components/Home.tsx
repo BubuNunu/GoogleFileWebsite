@@ -17,6 +17,7 @@ import {
   IconButton,
   Menu,
   MenuItem,
+  Drawer,
 } from '@mui/material';
 import {
   Build,
@@ -28,7 +29,8 @@ import {
   Engineering,
   Stars,
   Support,
-  KeyboardArrowDown
+  KeyboardArrowDown,
+  Menu as MenuIcon,
 } from '@mui/icons-material';
 import { Link, Routes, Route, useLocation } from 'react-router-dom';
 import About from './pages/About';
@@ -61,6 +63,7 @@ const Home = () => {
   const [quoteDialogOpen, setQuoteDialogOpen] = useState(false);
   const [servicesAnchorEl, setServicesAnchorEl] = useState<null | HTMLElement>(null);
   const [productsAnchorEl, setProductsAnchorEl] = useState<null | HTMLElement>(null);
+  const [mobileOpen, setMobileOpen] = React.useState(false);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -98,6 +101,8 @@ const Home = () => {
     return location.pathname === path;
   };
 
+  const handleDrawerToggle = () => setMobileOpen(!mobileOpen);
+
   return (
     <Box sx={{ flex: 1, width: '100%' }}>
       {/* Header/Navbar */}
@@ -122,6 +127,13 @@ const Home = () => {
               }}
             />
           </Link>
+          {/* Hamburger menu for mobile */}
+          <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
+            <IconButton color="inherit" edge="start" onClick={handleDrawerToggle}>
+              <MenuIcon />
+            </IconButton>
+          </Box>
+          {/* Desktop nav */}
           <Box sx={{ display: { xs: 'none', md: 'flex' }, gap: 2 }}>
             <Button
               color="inherit"
@@ -267,6 +279,64 @@ const Home = () => {
           <LanguageSwitcher />
         </Toolbar>
       </AppBar>
+      {/* Drawer for mobile nav */}
+      <Drawer
+        anchor="left"
+        open={mobileOpen}
+        onClose={handleDrawerToggle}
+        ModalProps={{ keepMounted: true }}
+      >
+        <Box sx={{ width: 250, p: 2 }} role="presentation" onClick={handleDrawerToggle}>
+          <Button
+            color="inherit"
+            component={Link}
+            to="/"
+            sx={{ width: '100%', justifyContent: 'flex-start', mb: 1 }}
+          >
+            {t('nav.home')}
+          </Button>
+          <Button
+            color="inherit"
+            component={Link}
+            to="/about"
+            sx={{ width: '100%', justifyContent: 'flex-start', mb: 1 }}
+          >
+            {t('nav.about')}
+          </Button>
+          <Button
+            color="inherit"
+            component={Link}
+            to="/services"
+            sx={{ width: '100%', justifyContent: 'flex-start', mb: 1 }}
+          >
+            {t('nav.services')}
+          </Button>
+          <Button
+            color="inherit"
+            component={Link}
+            to="/products"
+            sx={{ width: '100%', justifyContent: 'flex-start', mb: 1 }}
+          >
+            {t('nav.products')}
+          </Button>
+          <Button
+            color="inherit"
+            component={Link}
+            to="/contact"
+            sx={{ width: '100%', justifyContent: 'flex-start', mb: 1 }}
+          >
+            {t('nav.contact')}
+          </Button>
+          <Button
+            color="primary"
+            variant="contained"
+            sx={{ width: '100%', mt: 2 }}
+            onClick={handleQuoteClick}
+          >
+            {t('nav.getQuote')}
+          </Button>
+        </Box>
+      </Drawer>
 
       <Box 
         component="main" 
