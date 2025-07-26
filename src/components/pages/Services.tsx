@@ -16,6 +16,7 @@ import {
   Tabs,
   Tab
 } from '@mui/material';
+import { useLocation } from 'react-router-dom';
 import {
   AcUnit,
   Recycling,
@@ -224,6 +225,7 @@ const Services: React.FC<ServicesProps> = ({ onQuoteClick }) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
   const { i18n } = useTranslation();
+  const location = useLocation();
   const language = i18n.language === 'zh' ? 'zh' : 'en';
   
   // State to track selected service
@@ -237,11 +239,14 @@ const Services: React.FC<ServicesProps> = ({ onQuoteClick }) => {
       const hash = window.location.hash.replace('#', '');
       if (hash && SERVICES_DATA.some(service => service.id === hash)) {
         setSelectedServiceId(hash);
+      } else if (!hash) {
+        // If no hash, default to first service
+        setSelectedServiceId(SERVICES_DATA[0].id);
       }
     };
 
-    // Initial check
-    handleHashChange();
+    // Initial check with a small delay to ensure navigation is complete
+    setTimeout(handleHashChange, 10);
     
     // Listen for hash changes
     window.addEventListener('hashchange', handleHashChange);
@@ -250,6 +255,14 @@ const Services: React.FC<ServicesProps> = ({ onQuoteClick }) => {
       window.removeEventListener('hashchange', handleHashChange);
     };
   }, []);
+
+  // Additional effect to handle hash changes from React Router navigation
+  useEffect(() => {
+    const hash = location.hash.replace('#', '');
+    if (hash && SERVICES_DATA.some(service => service.id === hash)) {
+      setSelectedServiceId(hash);
+    }
+  }, [location.hash]);
 
   // Handle service selection
   const handleServiceSelect = (serviceId: string) => {

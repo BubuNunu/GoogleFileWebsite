@@ -51,7 +51,7 @@ const Products: React.FC<ProductsProps> = ({ onQuoteClick }) => {
       title: t('products.systems.vrv.title'),
       subtitle: t('products.systems.vrv.subtitle'),
       bestFor: t('products.systems.vrv.bestFor'),
-      description: t('products.systems.vrv.description'),
+      whyChoose: t('products.systems.vrv.whyChoose'),
       bonus: t('products.systems.vrv.bonus')
     },
     {
@@ -59,14 +59,14 @@ const Products: React.FC<ProductsProps> = ({ onQuoteClick }) => {
       icon: <AcUnit sx={{ fontSize: 40, color: 'primary.main' }} />,
       title: t('products.systems.ducted.title'),
       bestFor: t('products.systems.ducted.bestFor'),
-      description: t('products.systems.ducted.description')
+      whyChoose: t('products.systems.ducted.whyChoose')
     },
     {
       id: 'evaporative',
       icon: <Opacity sx={{ fontSize: 40, color: 'primary.main' }} />,
       title: t('products.systems.evaporative.title'),
       bestFor: t('products.systems.evaporative.bestFor'),
-      description: t('products.systems.evaporative.description')
+      whyChoose: t('products.systems.evaporative.whyChoose')
     }
   ];
 
@@ -156,8 +156,12 @@ const Products: React.FC<ProductsProps> = ({ onQuoteClick }) => {
                       >
                         <strong>Best for:</strong> {product.bestFor}
                       </Typography>
-                      <Typography variant="body1" paragraph>
-                        {product.description}
+                      <Typography 
+                        variant="body1" 
+                        paragraph
+                        sx={{ mb: 2 }}
+                      >
+                        <strong>Why choose it:</strong> {product.whyChoose}
                       </Typography>
                       {product.bonus && (
                         <Typography 

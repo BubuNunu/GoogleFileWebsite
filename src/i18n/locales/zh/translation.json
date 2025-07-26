@@ -40,18 +40,18 @@
         "title": "VRF / VRV / 多联机系统",
         "subtitle": "（符合VEU计划）",
         "bestFor": "适用于需要多个房间制冷且不适合安装管道的住宅或单元",
-        "description": "将多个室内机连接到一个室外机，实现每个房间的温度独立控制。非常适合现有住宅、翻新项目、双层住宅或屋顶空间有限的物业。",
+        "whyChoose": "将多个室内机连接到一个室外机，实现每个房间的温度独立控制。非常适合现有住宅、翻新项目、双层住宅或屋顶空间有限的物业。",
         "bonus": "这些系统符合VEU返利条件，是注重节能的房主的明智投资选择。"
       },
       "ducted": {
         "title": "管道式空调系统",
         "bestFor": "新建房屋或大型翻新项目的全屋舒适解决方案",
-        "description": "通过天花板或地板管道提供低调而强大的制冷和供暖。完美适合希望在整个物业实现无缝气候控制且对视觉影响最小的房主。"
+        "whyChoose": "通过天花板或地板管道提供低调而强大的制冷和供暖。完美适合希望在整个物业实现无缝气候控制且对视觉影响最小的房主。"
       },
       "evaporative": {
         "title": "蒸发式制冷系统",
         "bestFor": "干燥气候、大型开放式住宅",
-        "description": "一种经济环保的解决方案，利用水自然冷却空气。非常适合在维多利亚州干燥季节寻求新鲜空气流通和低运行成本的家庭。"
+        "whyChoose": "一种经济环保的解决方案，利用水自然冷却空气。非常适合在维多利亚州干燥季节寻求新鲜空气流通和低运行成本的家庭。"
       }
     },
     "cta": {
@@ -63,6 +63,7 @@
   "about": {
     "title": "关于DAMI AIR",
     "description": "DAMI AIR有限公司专业为墨尔本住宅和商业物业提供空调安装、维修和维护服务。我们拥有一支技术精湛的团队，包括完全持证的制冷剂处理人员、水管工和电工，为您提供安全、高效且符合要求的解决方案。从新建和翻新到通过维多利亚能源升级（VEU）计划进行节能升级，我们致力于以具有竞争力的价格提供优质工艺和可靠服务。",
+    "learnMore": "了解更多",
     "team": {
       "title": "认识我们的专业团队",
       "intro": "在DAMI AIR有限公司，我们的优势在于我们的团队。我们是一支由完全合格且持证的制冷剂处理人员、水管工和电工组成的团队，致力于为墨尔本提供安全、合规且高质量的空调解决方案。",
@@ -92,14 +93,14 @@
   },
   "whyChooseUs": {
     "title": "为什么选择我们",
-    "pricing": "价格实惠",
-    "pricingDescription": "我们提供清晰、透明的价格，无隐藏费用。在开始任何工作之前，您将获得详细列明所有费用的报价。",
-    "technicians": "专业技师",
-    "techniciansDescription": "我们的团队由完全持证且经验丰富的暖通空调系统技师组成。",
-    "brands": "优质品牌",
-    "brandsDescription": "我们与领先制造商合作，为您提供最高品质的设备和零件。",
-    "support": "全天候支持",
-    "supportDescription": "为您的所有暖通空调需求提供24/7客户支持和快速响应。我们随时为您服务。"
+    "licensed": "持证专业团队",
+    "licensedDescription": "我们完全合格的制冷剂处理人员、水管工和电工确保每项工作都符合最高标准和法规要求。",
+    "veu": "符合VEU标准且节能高效",
+    "veuDescription": "我们专门从事符合维多利亚能源升级（VEU）计划条件的安装，帮助您在前期和长期能源成本上节省费用。",
+    "solutions": "定制解决方案与信赖品牌",
+    "solutionsDescription": "我们设计适合您房产和预算的系统，使用大金、三菱、美的等领先品牌，确保可靠性和性能。",
+    "pricing": "透明定价与全程服务",
+    "pricingDescription": "享受清晰透明报价的安心服务，无隐藏费用，从安装到合规文件（VBA和COES）再到持续维护提供全程支持。"
   },
   "cta": {
     "title": "需要专业暖通空调服务？",
@@ -108,8 +109,8 @@
   },
   "footer": {
     "companyName": "DAMI AIR有限公司",
-    "companyDescription": "DAMI拥有超过10年的经验，帮助墨尔本当地居民解决管道、供暖和制冷需求。提供优质产品、专业安装和世界级客户服务。",
-    "featuredServices": "特色服务",
+    "companyDescription": "DAMI AIR是一家总部位于墨尔本的公司，专门从事空调安装、维修和维护，拥有完全持证的技术人员和符合VEU标准的解决方案。",
+    "featuredServices": "我们的服务",
     "contactUs": "联系我们",
     "openingHours": {
       "title": "营业时间：",
@@ -119,28 +120,38 @@
     },
     "contactInfo": {
       "mobile": "手机：045 228 7883（英语/普通话）",
-      "email": "邮箱：info@damiair.com.au"
+      "email": "邮箱：info@damiair.com.au",
+      "address": "地址：198 Rooks Rd, Vermont, VIC 3133"
     }
   },
   "featuredServices": {
+    "title": "我们的服务",
     "airConditioning": "空调安装",
+    "airConditioningDescription": "为住宅和商业物业提供专业的空调系统安装服务。",
     "veu": "维多利亚能源升级计划",
+    "veuDescription": "通过维多利亚能源升级计划（VEU）进行节能升级，降低您的能源成本。",
     "hvacDesign": "新住宅暖通空调系统设计",
+    "hvacDesignDescription": "为新住宅定制暖通空调系统设计，确保最佳舒适度和能源效率。",
     "renovations": "翻新空调安装",
+    "renovationsDescription": "为翻新项目提供空调解决方案，无缝集成到您的设计中。",
     "maintenance": "维护与保养",
-    "repairs": "暖通空调维修与故障排除"
+    "maintenanceDescription": "定期维护和保养服务，保持您的暖通空调系统高效运行。",
+    "repairs": "暖通空调维修与故障排除",
+    "repairsDescription": "为所有暖通空调系统提供快速可靠的维修服务和故障排除。",
+    "viewAll": "查看所有服务"
   },
   "contact": {
     "title": "联系我们",
-    "openingHours": "营业时间",
+    "openingHours": "营业时间：",
     "hours": {
-      "weekdays": "周一至周五：上午8:00 - 下午6:00",
-      "saturday": "周六：上午9:00 - 下午4:00",
-      "sunday": "周日：休息"
+      "weekdays": "周一至周五：上午9:00 - 下午5:00",
+      "saturday": "周六：上午9:00 - 下午12:00",
+      "sunday": "周日：预约服务"
     },
     "contactInfo": "联系方式",
-    "phone": "0412 345 678",
-    "email": "info@dami-air.com"
+    "mobile": "手机：045 228 7883 (中英文服务)",
+    "email": "邮箱：info@damiair.com.au",
+    "address": "地址：198 Rooks Rd, Vermont, VIC 3133"
   },
   "projects": {
     "title": "我们的近期项目",
@@ -197,7 +208,7 @@
     },
     "message": {
       "label": "我们如何帮助您？",
-      "helper": "可选：提供任何关于您需求的额外详细信息"
+      "helper": "可选：提供任何关于您请求的额外详细信息。"
     },
     "buttons": {
       "cancel": "取消",

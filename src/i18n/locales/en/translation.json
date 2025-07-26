@@ -40,18 +40,18 @@
         "title": "VRF / VRV / Multi-Head Systems",
         "subtitle": "(VEU-Eligible)",
         "bestFor": "Homes or units with multiple rooms to cool, where ductwork isn't practical",
-        "description": "Connect several indoor units to a single outdoor compressor to individually control temperatures in each room. Great for existing homes, renovations, double storey homes or properties with limited roof space.",
+        "whyChoose": "Connect several indoor units to a single outdoor compressor to individually control temperatures in each room. Great for existing homes, renovations, double storey homes or properties with limited roof space.",
         "bonus": "These systems are eligible for VEU rebates, making them a smart investment for energy-conscious homeowners."
       },
       "ducted": {
         "title": "Ducted Air Conditioning Systems",
         "bestFor": "Whole-home comfort in new builds or major renovations",
-        "description": "Discreet, powerful cooling and heating delivered through ceiling or floor ducts. Perfect for homeowners wanting seamless climate control throughout the entire property with minimal visual impact."
+        "whyChoose": "Discreet, powerful cooling and heating delivered through ceiling or floor ducts. Perfect for homeowners wanting seamless climate control throughout the entire property with minimal visual impact."
       },
       "evaporative": {
         "title": "Evaporative Cooling Systems",
         "bestFor": "Dry climates, larger open-plan homes",
-        "description": "A cost-effective, eco-friendly solution that uses water to cool air naturally. Ideal for families looking for fresh airflow and low running costs in Victoria's drier seasons."
+        "whyChoose": "A cost-effective, eco-friendly solution that uses water to cool air naturally. Ideal for families looking for fresh airflow and low running costs in Victoria's drier seasons."
       }
     },
     "cta": {
@@ -63,6 +63,7 @@
   "about": {
     "title": "About DAMI AIR",
     "description": "At DAMI AIR PTY LTD, we specialise in air conditioning installation, repair, and maintenance for residential and commercial properties across Melbourne. With a skilled team of fully licensed refrigerant handlers, plumbers, and electricians, we deliver safe, efficient, and compliant solutions tailored to your needs. From new builds and renovations to energy-saving upgrades through the Victorian Energy Upgrades (VEU) program, we're committed to quality workmanship and reliable service at competitive prices.",
+    "learnMore": "Learn More",
     "team": {
       "title": "Meet Our Expert Team",
       "intro": "At DAMI AIR PTY LTD, our strength lies in our people. We're a team of fully qualified and licensed refrigerant handlers, plumbers, and electricians, committed to delivering safe, compliant, and high-quality air conditioning solutions across Melbourne.",
@@ -92,14 +93,14 @@
   },
   "whyChooseUs": {
     "title": "Why Choose Us",
-    "pricing": "Competitive Pricing",
-    "pricingDescription": "We provide clear, upfront pricing with no hidden costs. Get detailed quotes that break down all costs before any work begins.",
-    "technicians": "Expert Technicians",
-    "techniciansDescription": "Our team consists of fully licensed and certified technicians with extensive experience in HVAC systems.",
-    "brands": "Top Quality Brands",
-    "brandsDescription": "We partner with leading manufacturers to offer you the highest quality equipment and parts available.",
-    "support": "24/7 Support",
-    "supportDescription": "24/7 customer support and rapid response times for all your HVAC needs. We're always here when you need us."
+    "licensed": "Licensed & Experienced Team",
+    "licensedDescription": "Our fully qualified refrigerant handlers, plumbers, and electricians ensure every job meets the highest standards and regulatory compliance.",
+    "veu": "VEU-Compliant & Energy Efficient",
+    "veuDescription": "We specialise in installations eligible under the Victorian Energy Upgrades (VEU) program, helping you save on both upfront and long-term energy costs.",
+    "solutions": "Tailored Solutions & Trusted Brands",
+    "solutionsDescription": "We design systems to suit your property and budget, using leading brands like Daikin, Mitsubishi, and Midea for reliability and performance.",
+    "pricing": "Transparent Pricing & End-to-End Service",
+    "pricingDescription": "Enjoy peace of mind with clear, upfront quotes with no hidden costs, and full support from installation to compliance paperwork (VBA & COES) and ongoing maintenance."
   },
   "cta": {
     "title": "Need Professional HVAC Service?",
@@ -108,8 +109,8 @@
   },
   "footer": {
     "companyName": "DAMI AIR PTY LTD",
-    "companyDescription": "DAMI has over 10 years experience helping Melbourne locals with their plumbing, heating and cooling needs. Top quality products, professional installation and world class customer service.",
-    "featuredServices": "Featured Services",
+    "companyDescription": "DAMI AIR is a Melbourne-based company specialising in air conditioning installation, repair, and maintenance with fully licensed technicians and VEU-compliant solutions.",
+    "featuredServices": "Our Services",
     "contactUs": "Contact Us",
     "openingHours": {
       "title": "We Open:",
@@ -119,28 +120,38 @@
     },
     "contactInfo": {
       "mobile": "Mobile: 045 228 7883 (English/Mandarin)",
-      "email": "Email: info@damiair.com.au"
+      "email": "Email: info@damiair.com.au",
+      "address": "Address: 198 Rooks Rd, Vermont, VIC 3133"
     }
   },
   "featuredServices": {
+    "title": "Our Services",
     "airConditioning": "Air Conditioning Installation",
+    "airConditioningDescription": "Professional installation of air conditioning systems for residential and commercial properties.",
     "veu": "Victorian Energy Upgrades (VEU)",
+    "veuDescription": "Energy-efficient upgrades with Victorian Energy Upgrades (VEU) rebates to reduce your energy costs.",
     "hvacDesign": "HVAC System Design for New Homes",
+    "hvacDesignDescription": "Custom HVAC system design for new homes, ensuring optimal comfort and energy efficiency.",
     "renovations": "Air Conditioning for Renovations",
+    "renovationsDescription": "Air conditioning solutions for renovation projects, seamlessly integrated into your design.",
     "maintenance": "Maintenance & Servicing",
-    "repairs": "HVAC Repairs & Troubleshooting"
+    "maintenanceDescription": "Regular maintenance and servicing to keep your HVAC system running efficiently.",
+    "repairs": "HVAC Repairs & Troubleshooting",
+    "repairsDescription": "Fast and reliable repair services for all HVAC systems and troubleshooting.",
+    "viewAll": "View All Services"
   },
   "contact": {
     "title": "Contact Us",
-    "openingHours": "Opening Hours",
+    "openingHours": "We Open:",
     "hours": {
-      "weekdays": "Monday - Friday: 8:00 AM - 6:00 PM",
-      "saturday": "Saturday: 9:00 AM - 4:00 PM",
-      "sunday": "Sunday: Closed"
+      "weekdays": "Mon - Fri: 9:00 am - 5:00 pm",
+      "saturday": "Sat: 9:00 am - 12:00 pm",
+      "sunday": "Sun: By Appointment"
     },
     "contactInfo": "Contact Information",
-    "phone": "0412 345 678",
-    "email": "info@dami-air.com"
+    "mobile": "Mobile: 045 228 7883 (English/Mandarin)",
+    "email": "Email: info@damiair.com.au",
+    "address": "Address: 198 Rooks Rd, Vermont, VIC 3133"
   },
   "projects": {
     "title": "Our Recent Projects",
@@ -197,7 +208,7 @@
     },
     "message": {
       "label": "How can we help?",
-      "helper": "Optional: Provide any additional details about your requirements"
+      "helper": "Optional: Provide any additional details about your request."
     },
     "buttons": {
       "cancel": "Cancel",

@@ -31,13 +31,19 @@ import {
   Support,
   KeyboardArrowDown,
   Menu as MenuIcon,
+  AcUnit,
+  Recycling,
+  HomeWork,
+  BuildCircle,
+  Warning,
 } from '@mui/icons-material';
 import { Link, Routes, Route, useLocation } from 'react-router-dom';
 import About from './pages/About';
 import Services from './pages/Services';
 import Products from './pages/Products';
 import Contact from './pages/Contact';
-import logo from '../assets/images/FullLogo_Transparent_NoBuffer_NoSlogan.png';
+import logo from '../assets/images/Brand Logo/FullLogo_Transparent_WhiteText.png';
+import aboutLogo from '../assets/images/Brand Logo/FullLogo_Transparent_FullText_3.png';
 import arcLogo from '../assets/images/Licence logo/licence - australian-refrigeration-council-arc-logo-vector.svg';
 import vbaLogo from '../assets/images/Licence logo/licence - VBA.png';
 import Carousel from 'react-material-ui-carousel';
@@ -66,8 +72,11 @@ const Home = () => {
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
   useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [location.pathname]);
+    // Only scroll to top if there's no hash in the URL
+    if (!location.hash) {
+      window.scrollTo(0, 0);
+    }
+  }, [location.pathname, location.hash]);
 
   const handleServicesClick = (event: React.MouseEvent<HTMLElement>) => {
     setServicesAnchorEl(event.currentTarget);
@@ -83,10 +92,7 @@ const Home = () => {
 
   const handleServicesCloseAndScroll = () => {
     handleServicesClose();
-    // Wait for navigation to complete
-    setTimeout(() => {
-      window.scrollTo(0, 0);
-    }, 100);
+    // Don't force scroll to top - let the anchor navigation work naturally
   };
 
   const handleProductsClose = () => {
@@ -116,9 +122,6 @@ const Home = () => {
               sx={{
                 height: 50,
                 mr: 2,
-                p: 0.5,
-                backgroundColor: 'rgba(255, 255, 255, 0.9)',
-                borderRadius: 1,
                 transition: 'transform 0.2s ease-in-out',
                 cursor: 'pointer',
                 '&:hover': {
@@ -420,9 +423,11 @@ const Home = () => {
                         component="h1" 
                         gutterBottom
                         sx={{
-                          fontSize: { xs: '2rem', sm: '3rem', md: '3.75rem' },
-                          fontWeight: 'bold',
-                          mb: 3
+                          fontSize: { xs: '1.75rem', sm: '2.5rem', md: '3.5rem' },
+                          fontWeight: 700,
+                          mb: 3,
+                          lineHeight: { xs: 1.2, sm: 1.3, md: 1.4 },
+                          letterSpacing: '-0.02em'
                         }}
                       >
                         {t('hero.title')}
@@ -432,7 +437,11 @@ const Home = () => {
                         gutterBottom
                         sx={{
                           mb: 4,
-                          fontSize: { xs: '1.2rem', sm: '1.5rem' }
+                          fontSize: { xs: '1.1rem', sm: '1.3rem', md: '1.5rem' },
+                          fontWeight: 400,
+                          lineHeight: 1.6,
+                          opacity: 0.95,
+                          maxWidth: '800px'
                         }}
                       >
                         {t('hero.subtitle')}
@@ -444,9 +453,13 @@ const Home = () => {
                           size="large"
                           onClick={handleQuoteClick}
                           sx={{
-                            px: 4,
-                            py: 1.5,
-                            fontSize: '1.1rem'
+                            px: 5,
+                            py: 1.8,
+                            fontSize: { xs: '1rem', sm: '1.1rem' },
+                            fontWeight: 600,
+                            textTransform: 'none',
+                            borderRadius: 2,
+                            boxShadow: 3
                           }}
                         >
                           {t('hero.cta')}
@@ -457,7 +470,428 @@ const Home = () => {
                 ))}
               </Carousel>
 
-              {/* Brands Section - Moved here, right below the hero */}
+              {/* About Section */}
+              <Box sx={{ bgcolor: 'grey.100', py: 8 }}>
+                <Container>
+                  <Grid container spacing={6} alignItems="center">
+                    <Grid item xs={12} md={4}>
+                      <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+                        <CardMedia
+                          component="img"
+                          image={aboutLogo}
+                          alt="DAMI AIR Logo"
+                          sx={{ 
+                            borderRadius: 4,
+                            maxHeight: 220,
+                            maxWidth: '100%',
+                            objectFit: 'contain',
+                            p: 3,
+                            backgroundColor: 'white',
+                            boxShadow: '0 4px 12px rgba(0, 0, 0, 0.12)',
+                            transition: 'all 0.3s ease-in-out',
+                            '&:hover': {
+                              boxShadow: '0 8px 20px rgba(0, 0, 0, 0.15)',
+                              transform: 'translateY(-3px)'
+                            }
+                          }}
+                        />
+                      </Box>
+                    </Grid>
+                    <Grid item xs={12} md={8}>
+                      <Typography 
+                        variant="h4" 
+                        component="h2" 
+                        gutterBottom
+                        sx={{
+                          fontSize: { xs: '1.75rem', sm: '2rem', md: '2.25rem' },
+                          fontWeight: 700,
+                          mb: 3,
+                          color: 'text.primary',
+                          lineHeight: 1.3
+                        }}
+                      >
+                        {t('about.title')}
+                      </Typography>
+                      <Typography 
+                        variant="body1" 
+                        paragraph 
+                        sx={{ 
+                          lineHeight: 1.8, 
+                          mb: 4,
+                          fontSize: { xs: '1rem', sm: '1.1rem' },
+                          color: 'text.secondary',
+                          fontWeight: 400
+                        }}
+                      >
+                        {t('about.description')}
+                      </Typography>
+                      <Button 
+                        variant="outlined" 
+                        color="primary"
+                        component={Link}
+                        to="/about"
+                        sx={{ 
+                          mt: 1,
+                          px: 3,
+                          py: 1.2,
+                          fontSize: '1rem',
+                          fontWeight: 500,
+                          textTransform: 'none',
+                          borderRadius: 2
+                        }}
+                        onClick={() => window.scrollTo(0, 0)}
+                      >
+                        {t('about.learnMore', 'Learn More')}
+                      </Button>
+                    </Grid>
+                  </Grid>
+                </Container>
+              </Box>
+
+              {/* Featured Services */}
+              <Box sx={{ py: 8 }}>
+                <Container maxWidth="lg">
+                  <Typography 
+                    variant="h4" 
+                    component="h2" 
+                    gutterBottom 
+                    align="center"
+                    sx={{ 
+                      mb: 6,
+                      fontSize: { xs: '1.75rem', sm: '2rem', md: '2.25rem' },
+                      fontWeight: 700,
+                      color: 'text.primary',
+                      lineHeight: 1.3
+                    }}
+                  >
+                    {t('featuredServices.title', 'Our Services')}
+                  </Typography>
+                  <Grid container spacing={3} justifyContent="center">
+                    {[
+                      { 
+                        icon: <AcUnit sx={{ fontSize: 40, color: '#4FC3F7' }} />, 
+                        title: t('featuredServices.airConditioning')
+                      },
+                      { 
+                        icon: <Recycling sx={{ fontSize: 40, color: '#4CAF50' }} />, 
+                        title: t('featuredServices.veu')
+                      },
+                      { 
+                        icon: <HomeWork sx={{ fontSize: 40, color: '#8D6E63' }} />, 
+                        title: t('featuredServices.hvacDesign')
+                      },
+                      { 
+                        icon: <BuildCircle sx={{ fontSize: 40, color: '#9C27B0' }} />, 
+                        title: t('featuredServices.renovations')
+                      },
+                      { 
+                        icon: <Handyman sx={{ fontSize: 40, color: '#9C27B0' }} />, 
+                        title: t('featuredServices.maintenance')
+                      },
+                      { 
+                        icon: <Warning sx={{ fontSize: 40, color: '#FF9800' }} />, 
+                        title: t('featuredServices.repairs')
+                      }
+                    ].map((service, index) => {
+                      const getServiceLink = (idx: number): string => {
+                        switch (idx) {
+                          case 0: return '/services#air-conditioning';
+                          case 1: return '/services#veu';
+                          case 2: return '/services#new-homes';
+                          case 3: return '/services#renovations';
+                          case 4: return '/services#maintenance';
+                          case 5: return '/services#repairs';
+                          default: return '/services';
+                        }
+                      };
+
+                      return (
+                        <Grid item xs={6} sm={4} md={2} key={index}>
+                          <Card 
+                            component={Link}
+                            to={getServiceLink(index)}
+                            onClick={() => window.scrollTo(0, 0)}
+                            sx={{ 
+                              height: '100%',
+                              display: 'flex',
+                              flexDirection: 'column',
+                              alignItems: 'center',
+                              textAlign: 'center',
+                              p: 3,
+                              cursor: 'pointer',
+                              textDecoration: 'none',
+                              color: 'inherit',
+                              transition: 'transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out',
+                              '&:hover': {
+                                transform: 'translateY(-4px)',
+                                boxShadow: 3,
+                                textDecoration: 'none',
+                                color: 'inherit'
+                              }
+                            }}
+                          >
+                          <Box 
+                            sx={{ 
+                              mb: 2,
+                              display: 'flex',
+                              alignItems: 'center',
+                              justifyContent: 'center',
+                              width: 60,
+                              height: 60,
+                              borderRadius: '50%',
+                              backgroundColor: 'grey.50'
+                            }}
+                          >
+                            {service.icon}
+                          </Box>
+                          <Typography 
+                            variant="body1"
+                            sx={{ 
+                              fontSize: { xs: '0.95rem', sm: '1rem' },
+                              color: 'text.primary',
+                              fontWeight: 500,
+                              lineHeight: 1.4,
+                              textAlign: 'center'
+                            }}
+                          >
+                            {service.title}
+                          </Typography>
+                        </Card>
+                      </Grid>
+                      );
+                    })}
+                  </Grid>
+                </Container>
+              </Box>
+
+              {/* Products Section */}
+              <Box sx={{ bgcolor: 'grey.100', py: 8 }}>
+                <Container maxWidth="lg">
+                  <Typography 
+                    variant="h4" 
+                    component="h2" 
+                    gutterBottom 
+                    align="center"
+                    sx={{ 
+                      mb: 6,
+                      fontSize: { xs: '1.75rem', sm: '2rem', md: '2.25rem' },
+                      fontWeight: 700,
+                      color: 'text.primary',
+                      lineHeight: 1.3
+                    }}
+                  >
+                    {t('nav.products', 'Products')}
+                  </Typography>
+                  <Grid container spacing={4} justifyContent="center">
+                    {[
+                      { 
+                        icon: <ElectricBolt sx={{ fontSize: 40, color: '#2196F3' }} />, 
+                        title: t('products.systems.vrv.title'),
+                        description: t('products.systems.vrv.whyChoose'),
+                        link: '/products#vrv'
+                      },
+                      { 
+                        icon: <AcUnit sx={{ fontSize: 40, color: '#00BCD4' }} />, 
+                        title: t('products.systems.ducted.title'),
+                        description: t('products.systems.ducted.whyChoose'),
+                        link: '/products#ducted'
+                      },
+                      { 
+                        icon: <Support sx={{ fontSize: 40, color: '#4CAF50' }} />, 
+                        title: t('products.systems.evaporative.title'),
+                        description: t('products.systems.evaporative.whyChoose'),
+                        link: '/products#evaporative'
+                      }
+                    ].map((product, index) => (
+                      <Grid item xs={12} sm={6} md={4} key={index}>
+                        <Card 
+                          component={Link}
+                          to={product.link}
+                          onClick={() => window.scrollTo(0, 0)}
+                          sx={{ 
+                            height: '100%',
+                            display: 'flex',
+                            flexDirection: 'column',
+                            alignItems: 'center',
+                            textAlign: 'center',
+                            p: 3,
+                            cursor: 'pointer',
+                            textDecoration: 'none',
+                            color: 'inherit',
+                            transition: 'transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out',
+                            '&:hover': {
+                              transform: 'translateY(-6px)',
+                              boxShadow: 6,
+                              textDecoration: 'none',
+                              color: 'inherit'
+                            }
+                          }}
+                        >
+                          <Box 
+                            sx={{ 
+                              mb: 2,
+                              display: 'flex',
+                              alignItems: 'center',
+                              justifyContent: 'center',
+                              width: 80,
+                              height: 80,
+                              borderRadius: '50%',
+                              backgroundColor: 'grey.50',
+                              boxShadow: 1
+                            }}
+                          >
+                            {product.icon}
+                          </Box>
+                          <Typography 
+                            variant="h6" 
+                            component="h3" 
+                            gutterBottom
+                            sx={{ 
+                              fontWeight: 600,
+                              mb: 2,
+                              fontSize: { xs: '1.1rem', sm: '1.2rem' },
+                              color: 'text.primary',
+                              lineHeight: 1.4
+                            }}
+                          >
+                            {product.title}
+                          </Typography>
+                          <Typography 
+                            variant="body2" 
+                            color="text.secondary"
+                            sx={{ 
+                              lineHeight: 1.7,
+                              fontSize: { xs: '0.9rem', sm: '0.95rem' },
+                              fontWeight: 400
+                            }}
+                          >
+                            {product.description}
+                          </Typography>
+                        </Card>
+                      </Grid>
+                    ))}
+                  </Grid>
+                </Container>
+              </Box>
+
+              {/* Why Choose Us */}
+              <Box sx={{ py: 8 }}>
+                <Container maxWidth="lg">
+                  <Typography 
+                    variant="h3" 
+                    component="h2" 
+                    gutterBottom 
+                    align="center"
+                    sx={{ 
+                      mb: 6,
+                      fontSize: { xs: '2rem', sm: '2.5rem', md: '3rem' },
+                      fontWeight: 700,
+                      color: 'text.primary',
+                      lineHeight: 1.2,
+                      position: 'relative',
+                      '&::after': {
+                        content: '""',
+                        position: 'absolute',
+                        bottom: '-16px',
+                        left: '50%',
+                        transform: 'translateX(-50%)',
+                        width: '60px',
+                        height: '4px',
+                        backgroundColor: 'primary.main',
+                        borderRadius: '2px'
+                      }
+                    }}
+                  >
+                    {t('whyChooseUs.title')}
+                  </Typography>
+                  <Grid container spacing={4} justifyContent="center">
+                    {[
+                      { 
+                        icon: <Engineering sx={{ fontSize: 40, color: 'primary.main' }} />, 
+                        title: t('whyChooseUs.licensed'),
+                        description: t('whyChooseUs.licensedDescription')
+                      },
+                      { 
+                        icon: <Recycling sx={{ fontSize: 40, color: 'primary.main' }} />, 
+                        title: t('whyChooseUs.veu'),
+                        description: t('whyChooseUs.veuDescription')
+                      },
+                      { 
+                        icon: <Stars sx={{ fontSize: 40, color: 'primary.main' }} />, 
+                        title: t('whyChooseUs.solutions'),
+                        description: t('whyChooseUs.solutionsDescription')
+                      },
+                      { 
+                        icon: <MonetizationOn sx={{ fontSize: 40, color: 'primary.main' }} />, 
+                        title: t('whyChooseUs.pricing'),
+                        description: t('whyChooseUs.pricingDescription')
+                      }
+                    ].map((item, index) => (
+                      <Grid item xs={12} sm={6} md={3} key={index}>
+                        <Card 
+                          sx={{ 
+                            height: '100%',
+                            display: 'flex',
+                            flexDirection: 'column',
+                            alignItems: 'center',
+                            textAlign: 'center',
+                            p: 3,
+                            transition: 'transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out',
+                            '&:hover': {
+                              transform: 'translateY(-8px)',
+                              boxShadow: 6
+                            }
+                          }}
+                        >
+                          <Box 
+                            sx={{ 
+                              mb: 2,
+                              display: 'flex',
+                              alignItems: 'center',
+                              justifyContent: 'center',
+                              width: 80,
+                              height: 80,
+                              borderRadius: '50%',
+                              backgroundColor: 'grey.50',
+                              boxShadow: 1
+                            }}
+                          >
+                            {item.icon}
+                          </Box>
+                          <Typography 
+                            variant="h6" 
+                            component="h3" 
+                            gutterBottom
+                            sx={{ 
+                              fontWeight: 600,
+                              mb: 2,
+                              fontSize: { xs: '1.1rem', sm: '1.2rem' },
+                              color: 'text.primary',
+                              lineHeight: 1.4
+                            }}
+                          >
+                            {item.title}
+                          </Typography>
+                          <Typography 
+                            variant="body1" 
+                            color="text.secondary"
+                            sx={{ 
+                              flex: 1,
+                              lineHeight: 1.7,
+                              fontSize: { xs: '0.95rem', sm: '1rem' },
+                              fontWeight: 400
+                            }}
+                          >
+                            {item.description}
+                          </Typography>
+                        </Card>
+                      </Grid>
+                    ))}
+                  </Grid>
+                </Container>
+              </Box>
+
+              {/* Brands Section - Moved to the end */}
               <Box sx={{ bgcolor: 'grey.50', py: 6 }}>
                 <Container maxWidth="lg">
                   <Typography 
@@ -465,7 +899,13 @@ const Home = () => {
                     component="h2" 
                     gutterBottom 
                     align="center"
-                    sx={{ mb: 3 }}
+                    sx={{ 
+                      mb: 3,
+                      fontSize: { xs: '1.75rem', sm: '2rem', md: '2.25rem' },
+                      fontWeight: 700,
+                      color: 'text.primary',
+                      lineHeight: 1.3
+                    }}
                   >
                     {t('brands.title')}
                   </Typography>
@@ -475,7 +915,11 @@ const Home = () => {
                     sx={{ 
                       mb: 5,
                       maxWidth: '800px',
-                      mx: 'auto'
+                      mx: 'auto',
+                      fontSize: { xs: '1rem', sm: '1.1rem' },
+                      lineHeight: 1.7,
+                      color: 'text.secondary',
+                      fontWeight: 400
                     }}
                   >
                     {t('brands.description')}
@@ -533,234 +977,34 @@ const Home = () => {
                 </Container>
               </Box>
 
-              {/* Quick Services Section */}
-              <Container maxWidth="lg" sx={{ py: 8, width: '100%' }}>
-                <Typography variant="h4" component="h2" gutterBottom align="center" sx={{ mb: 6 }}>
-                  {t('services.title')}
-                </Typography>
-                <Grid container spacing={4} justifyContent="center">
-                  {[
-                    { icon: <Build />, title: t('services.installation.title'), description: t('services.installation.description') },
-                    { icon: <Handyman />, title: t('services.repairs.title'), description: t('services.repairs.description') },
-                    { icon: <ElectricBolt />, title: t('services.safety.title'), description: t('services.safety.description') },
-                  ].map((service, index) => (
-                    <Grid key={index} sx={{ width: { xs: '100%', sm: '50%', md: '33.33%' } }}>
-                      <Card sx={{ height: '100%' }}>
-                        <CardContent>
-                          <Box sx={{ display: 'flex', justifyContent: 'center', mb: 2 }}>
-                            {service.icon}
-                          </Box>
-                          <Typography variant="h5" component="h3" gutterBottom align="center">
-                            {service.title}
-                          </Typography>
-                          <Typography color="text.secondary" align="center">
-                            {service.description}
-                          </Typography>
-                        </CardContent>
-                      </Card>
-                    </Grid>
-                  ))}
-                </Grid>
-              </Container>
-
-              {/* About Section */}
-              <Box sx={{ bgcolor: 'grey.100', py: 8 }}>
-                <Container>
-                  <Grid container spacing={6} alignItems="center">
-                    <Grid item xs={12} md={4}>
-                      <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-                        <CardMedia
-                          component="img"
-                          image={logo}
-                          alt="DAMI AIR Logo"
-                          sx={{ 
-                            borderRadius: 4,
-                            maxHeight: 220,
-                            maxWidth: '100%',
-                            objectFit: 'contain',
-                            p: 3,
-                            backgroundColor: 'white',
-                            boxShadow: '0 4px 12px rgba(0, 0, 0, 0.12)',
-                            transition: 'all 0.3s ease-in-out',
-                            '&:hover': {
-                              boxShadow: '0 8px 20px rgba(0, 0, 0, 0.15)',
-                              transform: 'translateY(-3px)'
-                            }
-                          }}
-                        />
-                      </Box>
-                    </Grid>
-                    <Grid item xs={12} md={8}>
-                      <Typography variant="h4" component="h2" gutterBottom>
-                        {t('about.title')}
-                      </Typography>
-                      <Typography variant="body1" paragraph sx={{ lineHeight: 1.7, mb: 3 }}>
-                        {t('about.description')}
-                      </Typography>
-                      <Button 
-                        variant="outlined" 
-                        color="primary"
-                        component={Link}
-                        to="/about"
-                        sx={{ mt: 1 }}
-                        onClick={() => window.scrollTo(0, 0)}
-                      >
-                        {t('about.learnMore', 'Learn More')}
-                      </Button>
-                    </Grid>
-                  </Grid>
-                </Container>
-              </Box>
-
-              {/* Featured Services */}
-              <Container sx={{ py: 4 }}>
-                <Typography variant="h5" component="h2" gutterBottom align="center" sx={{ mb: 3 }}>
-                  {t('footer.featuredServices')}
-                </Typography>
-                <Grid container spacing={2}>
-                  {[
-                    { icon: '❄️', title: t('featuredServices.airConditioning') },
-                    { icon: '♻️', title: t('featuredServices.veu') },
-                    { icon: '🏠', title: t('featuredServices.hvacDesign') },
-                    { icon: '🛠️', title: t('featuredServices.renovations') },
-                    { icon: '🔧', title: t('featuredServices.maintenance') },
-                    { icon: '⚡', title: t('featuredServices.repairs') }
-                  ].map((service, index) => (
-                    <Grid item xs={6} sm={4} md={2} key={index}>
-                      <Card sx={{ 
-                        height: '100%',
-                        '&:hover': {
-                          transform: 'translateY(-4px)',
-                          transition: 'transform 0.3s ease-in-out',
-                          boxShadow: 2
-                        }
-                      }}>
-                        <CardContent sx={{ p: 2, '&:last-child': { pb: 2 } }}>
-                          <Typography variant="h4" align="center" sx={{ mb: 1 }}>
-                            {service.icon}
-                          </Typography>
-                          <Typography variant="subtitle2" component="h3" align="center">
-                            {service.title}
-                          </Typography>
-                        </CardContent>
-                      </Card>
-                    </Grid>
-                  ))}
-                </Grid>
-              </Container>
-
-              {/* Why Choose Us */}
-              <Box sx={{ bgcolor: 'grey.100', py: 8 }}>
-                <Container maxWidth="lg">
-                  <Typography 
-                    variant="h3" 
-                    component="h2" 
-                    gutterBottom 
-                    align="center"
-                    sx={{ 
-                      mb: 6,
-                      fontWeight: 'bold',
-                      position: 'relative',
-                      '&::after': {
-                        content: '""',
-                        position: 'absolute',
-                        bottom: '-16px',
-                        left: '50%',
-                        transform: 'translateX(-50%)',
-                        width: '60px',
-                        height: '4px',
-                        backgroundColor: 'primary.main',
-                        borderRadius: '2px'
-                      }
-                    }}
-                  >
-                    {t('whyChooseUs.title')}
-                  </Typography>
-                  <Grid container spacing={4} justifyContent="center">
-                    {[
-                      { 
-                        icon: <MonetizationOn sx={{ fontSize: 40, color: 'primary.main' }} />, 
-                        title: t('whyChooseUs.pricing'),
-                        description: t('whyChooseUs.pricingDescription')
-                      },
-                      { 
-                        icon: <Engineering sx={{ fontSize: 40, color: 'primary.main' }} />, 
-                        title: t('whyChooseUs.technicians'),
-                        description: t('whyChooseUs.techniciansDescription')
-                      },
-                      { 
-                        icon: <Stars sx={{ fontSize: 40, color: 'primary.main' }} />, 
-                        title: t('whyChooseUs.brands'),
-                        description: t('whyChooseUs.brandsDescription')
-                      },
-                      { 
-                        icon: <Support sx={{ fontSize: 40, color: 'primary.main' }} />, 
-                        title: t('whyChooseUs.support'),
-                        description: t('whyChooseUs.supportDescription')
-                      }
-                    ].map((item, index) => (
-                      <Grid item xs={12} sm={6} md={3} key={index}>
-                        <Card 
-                          sx={{ 
-                            height: '100%',
-                            display: 'flex',
-                            flexDirection: 'column',
-                            alignItems: 'center',
-                            textAlign: 'center',
-                            p: 3,
-                            transition: 'transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out',
-                            '&:hover': {
-                              transform: 'translateY(-8px)',
-                              boxShadow: 6
-                            }
-                          }}
-                        >
-                          <Box 
-                            sx={{ 
-                              mb: 2,
-                              display: 'flex',
-                              alignItems: 'center',
-                              justifyContent: 'center',
-                              width: 80,
-                              height: 80,
-                              borderRadius: '50%',
-                              backgroundColor: 'grey.50',
-                              boxShadow: 1
-                            }}
-                          >
-                            {item.icon}
-                          </Box>
-                          <Typography 
-                            variant="h6" 
-                            component="h3" 
-                            gutterBottom
-                            sx={{ 
-                              fontWeight: 'bold',
-                              mb: 2
-                            }}
-                          >
-                            {item.title}
-                          </Typography>
-                          <Typography 
-                            variant="body1" 
-                            color="text.secondary"
-                            sx={{ flex: 1 }}
-                          >
-                            {item.description}
-                          </Typography>
-                        </Card>
-                      </Grid>
-                    ))}
-                  </Grid>
-                </Container>
-              </Box>
-
               {/* CTA Section */}
               <Box sx={{ mt: 8, mb: 8, textAlign: 'center' }}>
-                <Typography variant="h4" component="h2" gutterBottom>
+                <Typography 
+                  variant="h4" 
+                  component="h2" 
+                  gutterBottom
+                  sx={{
+                    fontSize: { xs: '1.75rem', sm: '2rem', md: '2.25rem' },
+                    fontWeight: 700,
+                    color: 'text.primary',
+                    lineHeight: 1.3,
+                    mb: 3
+                  }}
+                >
                   {t('cta.title')}
                 </Typography>
-                <Typography variant="body1" sx={{ mb: 4, maxWidth: '600px', mx: 'auto' }}>
+                <Typography 
+                  variant="body1" 
+                  sx={{ 
+                    mb: 5, 
+                    maxWidth: '600px', 
+                    mx: 'auto',
+                    fontSize: { xs: '1rem', sm: '1.1rem' },
+                    lineHeight: 1.7,
+                    color: 'text.secondary',
+                    fontWeight: 400
+                  }}
+                >
                   {t('cta.subtitle')}
                 </Typography>
                 <Button
@@ -769,12 +1013,16 @@ const Home = () => {
                   size="large"
                   onClick={handleQuoteClick}
                   sx={{ 
-                    px: 4, 
-                    py: 1.5,
-                    fontSize: '1.1rem',
-                    boxShadow: 2,
+                    px: 5, 
+                    py: 2,
+                    fontSize: { xs: '1rem', sm: '1.1rem' },
+                    fontWeight: 600,
+                    textTransform: 'none',
+                    borderRadius: 2,
+                    boxShadow: 3,
                     '&:hover': {
-                      boxShadow: 4
+                      boxShadow: 6,
+                      transform: 'translateY(-1px)'
                     }
                   }}
                 >
@@ -796,43 +1044,50 @@ const Home = () => {
           <Grid container spacing={6} justifyContent="space-between">
             <Grid item xs={12} md={4}>
               <Box sx={{ pr: { md: 2 } }}>
-                <Typography variant="h6" gutterBottom>
+                <Typography 
+                  variant="h6" 
+                  gutterBottom
+                  sx={{
+                    fontSize: { xs: '1.1rem', sm: '1.2rem' },
+                    fontWeight: 600,
+                    color: 'white',
+                    mb: 2
+                  }}
+                >
                   {t('footer.companyName')}
                 </Typography>
-                <Typography variant="body2" sx={{ mb: 3 }}>
+                <Typography 
+                  variant="body2" 
+                  sx={{ 
+                    mb: 3,
+                    lineHeight: 1.6,
+                    color: 'grey.300',
+                    fontSize: '0.95rem'
+                  }}
+                >
                   {t('footer.companyDescription')}
                 </Typography>
                 <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
                   <Box
+                    component="img"
+                    src={arcLogo}
+                    alt="ARC License Logo"
                     sx={{ 
                       width: '100%',
                       maxWidth: '200px',
-                      height: '70px',
+                      height: '120px',
+                      objectFit: 'cover',
                       backgroundColor: 'white',
-                      padding: '8px',
+                      padding: '2px',
                       borderRadius: '8px',
                       boxShadow: '0 4px 12px rgba(0, 0, 0, 0.2)',
                       transition: 'all 0.3s ease',
-                      display: 'flex',
-                      justifyContent: 'center',
-                      alignItems: 'center',
                       '&:hover': {
                         transform: 'scale(1.05)',
                         boxShadow: '0 6px 16px rgba(0, 0, 0, 0.25)'
                       }
                     }}
-                  >
-                    <Box
-                      component="img"
-                      src={arcLogo}
-                      alt="ARC License Logo"
-                      sx={{ 
-                        width: '100%',
-                        height: '100%',
-                        maxHeight: '100%',
-                      }}
-                    />
-                  </Box>
+                  />
                   <Box
                     component="img"
                     src={vbaLogo}
@@ -858,7 +1113,16 @@ const Home = () => {
             </Grid>
             <Grid item xs={12} md={4}>
               <Box sx={{ px: { md: 4 } }}>
-                <Typography variant="h6" gutterBottom>
+                <Typography 
+                  variant="h6" 
+                  gutterBottom
+                  sx={{
+                    fontSize: { xs: '1.1rem', sm: '1.2rem' },
+                    fontWeight: 600,
+                    color: 'white',
+                    mb: 2
+                  }}
+                >
                   {t('footer.featuredServices')}
                 </Typography>
                 <List sx={{ p: 0 }}>
@@ -871,10 +1135,17 @@ const Home = () => {
                     t('featuredServices.repairs')
                   ].map((service, index) => (
                     <ListItem key={index} sx={{ px: 0, py: 0.5 }}>
-                      <Typography variant="body2" color="inherit" sx={{ 
-                        wordWrap: 'break-word',
-                        whiteSpace: 'normal'
-                      }}>
+                      <Typography 
+                        variant="body2" 
+                        color="inherit" 
+                        sx={{ 
+                          wordWrap: 'break-word',
+                          whiteSpace: 'normal',
+                          color: 'grey.300',
+                          fontSize: '0.9rem',
+                          lineHeight: 1.5
+                        }}
+                      >
                         {service}
                       </Typography>
                     </ListItem>
@@ -884,30 +1155,71 @@ const Home = () => {
             </Grid>
             <Grid item xs={12} md={4}>
               <Box sx={{ pl: { md: 2 } }}>
-                <Typography variant="h6" gutterBottom>
+                <Typography 
+                  variant="h6" 
+                  gutterBottom
+                  sx={{
+                    fontSize: { xs: '1.1rem', sm: '1.2rem' },
+                    fontWeight: 600,
+                    color: 'white',
+                    mb: 2
+                  }}
+                >
                   {t('footer.contactUs')}
                 </Typography>
-                <Typography variant="body2" sx={{ 
-                  whiteSpace: 'normal',
-                  wordWrap: 'break-word'
-                }}>
+                <Typography 
+                  variant="body2" 
+                  sx={{ 
+                    whiteSpace: 'normal',
+                    wordWrap: 'break-word',
+                    color: 'grey.300',
+                    fontSize: '0.9rem',
+                    lineHeight: 1.6,
+                    mb: 2
+                  }}
+                >
                   <strong>{t('footer.openingHours.title')}</strong><br />
                   {t('footer.openingHours.weekdays')}<br />
                   {t('footer.openingHours.saturday')}<br />
                   {t('footer.openingHours.sunday')}
                 </Typography>
-                <Typography variant="body2" sx={{ 
-                  mt: 2,
-                  whiteSpace: 'normal',
-                  wordWrap: 'break-word'
-                }}>
+                <Typography 
+                  variant="body2" 
+                  sx={{ 
+                    mt: 2,
+                    whiteSpace: 'normal',
+                    wordWrap: 'break-word',
+                    color: 'grey.300',
+                    fontSize: '0.9rem',
+                    lineHeight: 1.6
+                  }}
+                >
                   <strong>{t('footer.contactInfo.mobile')}</strong>
                 </Typography>
-                <Typography variant="body2" sx={{
-                  whiteSpace: 'normal',
-                  wordWrap: 'break-word'
-                }}>
+                <Typography 
+                  variant="body2" 
+                  sx={{
+                    whiteSpace: 'normal',
+                    wordWrap: 'break-word',
+                    color: 'grey.300',
+                    fontSize: '0.9rem',
+                    lineHeight: 1.6
+                  }}
+                >
                   <strong>{t('footer.contactInfo.email')}</strong>
+                </Typography>
+                <Typography 
+                  variant="body2" 
+                  sx={{
+                    mt: 2,
+                    whiteSpace: 'normal',
+                    wordWrap: 'break-word',
+                    color: 'grey.300',
+                    fontSize: '0.9rem',
+                    lineHeight: 1.6
+                  }}
+                >
+                  <strong>{t('footer.contactInfo.address')}</strong>
                 </Typography>
               </Box>
             </Grid>
