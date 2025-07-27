@@ -282,19 +282,34 @@ const Home = () => {
           <LanguageSwitcher />
         </Toolbar>
       </AppBar>
-      {/* Drawer for mobile nav */}
+              {/* Drawer for mobile nav */}
       <Drawer
         anchor="left"
         open={mobileOpen}
         onClose={handleDrawerToggle}
         ModalProps={{ keepMounted: true }}
+        sx={{
+          '& .MuiDrawer-paper': {
+            width: { xs: '280px', sm: '320px' },
+            maxWidth: '90vw'
+          }
+        }}
       >
-        <Box sx={{ width: 250, p: 2 }} role="presentation" onClick={handleDrawerToggle}>
+        <Box sx={{ width: '100%', p: 2 }} role="presentation" onClick={handleDrawerToggle}>
+          <Typography variant="h6" sx={{ mb: 2, fontWeight: 'bold', color: 'primary.main' }}>
+            Menu
+          </Typography>
           <Button
             color="inherit"
             component={Link}
             to="/"
-            sx={{ width: '100%', justifyContent: 'flex-start', mb: 1 }}
+            sx={{ 
+              width: '100%', 
+              justifyContent: 'flex-start', 
+              mb: 1, 
+              py: 1.5,
+              fontSize: '1rem'
+            }}
           >
             {t('nav.home')}
           </Button>
@@ -302,7 +317,13 @@ const Home = () => {
             color="inherit"
             component={Link}
             to="/about"
-            sx={{ width: '100%', justifyContent: 'flex-start', mb: 1 }}
+            sx={{ 
+              width: '100%', 
+              justifyContent: 'flex-start', 
+              mb: 1, 
+              py: 1.5,
+              fontSize: '1rem'
+            }}
           >
             {t('nav.about')}
           </Button>
@@ -310,7 +331,13 @@ const Home = () => {
             color="inherit"
             component={Link}
             to="/services"
-            sx={{ width: '100%', justifyContent: 'flex-start', mb: 1 }}
+            sx={{ 
+              width: '100%', 
+              justifyContent: 'flex-start', 
+              mb: 1, 
+              py: 1.5,
+              fontSize: '1rem'
+            }}
           >
             {t('nav.services')}
           </Button>
@@ -318,7 +345,13 @@ const Home = () => {
             color="inherit"
             component={Link}
             to="/products"
-            sx={{ width: '100%', justifyContent: 'flex-start', mb: 1 }}
+            sx={{ 
+              width: '100%', 
+              justifyContent: 'flex-start', 
+              mb: 1, 
+              py: 1.5,
+              fontSize: '1rem'
+            }}
           >
             {t('nav.products')}
           </Button>
@@ -326,14 +359,26 @@ const Home = () => {
             color="inherit"
             component={Link}
             to="/contact"
-            sx={{ width: '100%', justifyContent: 'flex-start', mb: 1 }}
+            sx={{ 
+              width: '100%', 
+              justifyContent: 'flex-start', 
+              mb: 1, 
+              py: 1.5,
+              fontSize: '1rem'
+            }}
           >
             {t('nav.contact')}
           </Button>
           <Button
             color="primary"
             variant="contained"
-            sx={{ width: '100%', mt: 2 }}
+            sx={{ 
+              width: '100%', 
+              mt: 3, 
+              py: 1.5,
+              fontSize: '1rem',
+              fontWeight: 600
+            }}
             onClick={handleQuoteClick}
           >
             {t('nav.getQuote')}
@@ -566,36 +611,36 @@ const Home = () => {
                   >
                     {t('featuredServices.title', 'Our Services')}
                   </Typography>
-                  <Grid container spacing={3} justifyContent="center">
+                  <Grid container spacing={{ xs: 2, sm: 3, md: 3 }} justifyContent="center">
                     {[
                       { 
-                        icon: <AcUnit sx={{ fontSize: 40, color: '#4FC3F7' }} />, 
+                        icon: <AcUnit sx={{ fontSize: { xs: 32, sm: 36, md: 40 }, color: '#4FC3F7' }} />, 
                         title: t('featuredServices.airConditioning')
                       },
                       { 
-                        icon: <Recycling sx={{ fontSize: 40, color: '#4CAF50' }} />, 
+                        icon: <Recycling sx={{ fontSize: { xs: 32, sm: 36, md: 40 }, color: '#4CAF50' }} />, 
                         title: t('featuredServices.veu')
                       },
                       { 
-                        icon: <HomeWork sx={{ fontSize: 40, color: '#8D6E63' }} />, 
+                        icon: <HomeWork sx={{ fontSize: { xs: 32, sm: 36, md: 40 }, color: '#8D6E63' }} />, 
                         title: t('featuredServices.hvacDesign')
                       },
                       { 
-                        icon: <BuildCircle sx={{ fontSize: 40, color: '#9C27B0' }} />, 
+                        icon: <BuildCircle sx={{ fontSize: { xs: 32, sm: 36, md: 40 }, color: '#9C27B0' }} />, 
                         title: t('featuredServices.renovations')
                       },
                       { 
-                        icon: <Handyman sx={{ fontSize: 40, color: '#9C27B0' }} />, 
+                        icon: <Handyman sx={{ fontSize: { xs: 32, sm: 36, md: 40 }, color: '#9C27B0' }} />, 
                         title: t('featuredServices.maintenance')
                       },
                       { 
-                        icon: <Warning sx={{ fontSize: 40, color: '#FF9800' }} />, 
+                        icon: <Warning sx={{ fontSize: { xs: 32, sm: 36, md: 40 }, color: '#FF9800' }} />, 
                         title: t('featuredServices.repairs')
                       }
                     ].map((service, index) => {
                       const getServiceLink = (idx: number): string => {
                         switch (idx) {
-                          case 0: return '/services#air-conditioning';
+                          case 0: return '/services#installation';
                           case 1: return '/services#veu';
                           case 2: return '/services#new-homes';
                           case 3: return '/services#renovations';
@@ -617,11 +662,12 @@ const Home = () => {
                               flexDirection: 'column',
                               alignItems: 'center',
                               textAlign: 'center',
-                              p: 3,
+                              p: { xs: 1.5, sm: 2, md: 3 },
                               cursor: 'pointer',
                               textDecoration: 'none',
                               color: 'inherit',
                               transition: 'transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out',
+                              minHeight: { xs: '140px', sm: '160px', md: '180px' },
                               '&:hover': {
                                 transform: 'translateY(-4px)',
                                 boxShadow: 3,
@@ -632,12 +678,12 @@ const Home = () => {
                           >
                           <Box 
                             sx={{ 
-                              mb: 2,
+                              mb: { xs: 1, sm: 1.5, md: 2 },
                               display: 'flex',
                               alignItems: 'center',
                               justifyContent: 'center',
-                              width: 60,
-                              height: 60,
+                              width: { xs: 50, sm: 55, md: 60 },
+                              height: { xs: 50, sm: 55, md: 60 },
                               borderRadius: '50%',
                               backgroundColor: 'grey.50'
                             }}
@@ -647,11 +693,13 @@ const Home = () => {
                           <Typography 
                             variant="body1"
                             sx={{ 
-                              fontSize: { xs: '0.95rem', sm: '1rem' },
+                              fontSize: { xs: '0.85rem', sm: '0.9rem', md: '0.95rem' },
                               color: 'text.primary',
                               fontWeight: 500,
-                              lineHeight: 1.4,
-                              textAlign: 'center'
+                              lineHeight: 1.3,
+                              textAlign: 'center',
+                              wordBreak: 'break-word',
+                              hyphens: 'auto'
                             }}
                           >
                             {service.title}
@@ -701,9 +749,15 @@ const Home = () => {
                         title: t('products.systems.evaporative.title'),
                         description: t('products.systems.evaporative.whyChoose'),
                         link: '/products#evaporative'
+                      },
+                      { 
+                        icon: <Engineering sx={{ fontSize: 40, color: '#FF9800' }} />, 
+                        title: t('products.cta.title'),
+                        description: t('products.cta.description'),
+                        link: '/products#consultation'
                       }
                     ].map((product, index) => (
-                      <Grid item xs={12} sm={6} md={4} key={index}>
+                      <Grid item xs={12} sm={6} md={3} key={index}>
                         <Card 
                           component={Link}
                           to={product.link}

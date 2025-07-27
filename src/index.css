@@ -9,6 +9,7 @@ html, body, #root {
   min-height: 100vh;
   margin: 0;
   padding: 0;
+  overflow-x: hidden;
 }
 
 #root {
@@ -29,6 +30,7 @@ html, body, #root {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
 }
 
 a {
@@ -44,10 +46,11 @@ body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
+  overflow-x: hidden;
 }
 
 h1 {
-  font-size: 3.2em;
+  font-size: clamp(1.8rem, 5vw, 3.2rem);
   line-height: 1.1;
 }
 
@@ -68,6 +71,17 @@ button:hover {
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
+}
+
+/* Mobile-specific improvements */
+@media (max-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+  
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
 }
 
 @media (prefers-color-scheme: light) {

@@ -197,57 +197,169 @@ const Products: React.FC<ProductsProps> = ({ onQuoteClick }) => {
           ))}
         </Grid>
 
-        {/* CTA Section */}
-        <Box 
-          id="products-cta"
+        {/* Consultation Section */}
+        <Card 
+          id="consultation"
           sx={{ 
-            textAlign: 'center',
-            p: 6,
-            bgcolor: 'grey.100',
-            borderRadius: 2,
+            mb: 8,
             position: 'relative',
-            overflow: 'hidden'
+            overflow: 'hidden',
+            background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+            color: 'white',
+            boxShadow: '0 20px 40px rgba(102, 126, 234, 0.3)',
+            '&:hover': {
+              transform: 'translateY(-4px)',
+              boxShadow: '0 25px 50px rgba(102, 126, 234, 0.4)',
+              transition: 'all 0.3s ease-in-out'
+            }
           }}
         >
-          <Search 
-            sx={{ 
-              fontSize: 120,
-              color: 'primary.light',
+          <CardContent sx={{ p: 6, position: 'relative', zIndex: 2 }}>
+            <Grid container spacing={4} alignItems="center">
+              <Grid item xs={12} md={8}>
+                <Box sx={{ display: 'flex', alignItems: 'center', mb: 3 }}>
+                  <Box 
+                    sx={{ 
+                      p: 2,
+                      borderRadius: '50%',
+                      bgcolor: 'rgba(255, 255, 255, 0.2)',
+                      backdropFilter: 'blur(10px)',
+                      mr: 3
+                    }}
+                  >
+                    <Search sx={{ fontSize: 40, color: 'white' }} />
+                  </Box>
+                  <Typography 
+                    variant="h4" 
+                    component="h2" 
+                    sx={{ 
+                      fontWeight: 700,
+                      fontSize: { xs: '1.75rem', sm: '2rem', md: '2.25rem' },
+                      lineHeight: 1.2
+                    }}
+                  >
+                    {t('products.cta.title')}
+                  </Typography>
+                </Box>
+                <Typography 
+                  variant="body1" 
+                  sx={{ 
+                    fontSize: '1.1rem',
+                    lineHeight: 1.7,
+                    opacity: 0.95,
+                    mb: 4
+                  }}
+                >
+                  {t('products.cta.description')}
+                </Typography>
+                <Box sx={{ display: 'flex', gap: 2, flexWrap: 'wrap' }}>
+                  <Paper 
+                    sx={{ 
+                      px: 2, 
+                      py: 1, 
+                      bgcolor: 'rgba(255, 255, 255, 0.15)',
+                      backdropFilter: 'blur(10px)',
+                      border: '1px solid rgba(255, 255, 255, 0.2)'
+                    }}
+                  >
+                    <Typography variant="body2" sx={{ color: 'white', fontWeight: 600 }}>
+                      ✓ {t('products.cta.badges.licensed')}
+                    </Typography>
+                  </Paper>
+                  <Paper 
+                    sx={{ 
+                      px: 2, 
+                      py: 1, 
+                      bgcolor: 'rgba(255, 255, 255, 0.15)',
+                      backdropFilter: 'blur(10px)',
+                      border: '1px solid rgba(255, 255, 255, 0.2)'
+                    }}
+                  >
+                    <Typography variant="body2" sx={{ color: 'white', fontWeight: 600 }}>
+                      ✓ {t('products.cta.badges.veuRebate')}
+                    </Typography>
+                  </Paper>
+                  <Paper 
+                    sx={{ 
+                      px: 2, 
+                      py: 1, 
+                      bgcolor: 'rgba(255, 255, 255, 0.15)',
+                      backdropFilter: 'blur(10px)',
+                      border: '1px solid rgba(255, 255, 255, 0.2)'
+                    }}
+                  >
+                    <Typography variant="body2" sx={{ color: 'white', fontWeight: 600 }}>
+                      ✓ {t('products.cta.badges.assessment')}
+                    </Typography>
+                  </Paper>
+                </Box>
+              </Grid>
+              <Grid item xs={12} md={4} sx={{ textAlign: 'center' }}>
+                <Button
+                  variant="contained"
+                  size="large"
+                  onClick={onQuoteClick}
+                  endIcon={<ArrowForward />}
+                  sx={{ 
+                    px: 4,
+                    py: 2,
+                    fontSize: '1.1rem',
+                    fontWeight: 700,
+                    bgcolor: 'white',
+                    color: 'primary.main',
+                    borderRadius: 3,
+                    boxShadow: '0 8px 20px rgba(0, 0, 0, 0.2)',
+                    textTransform: 'none',
+                    '&:hover': {
+                      bgcolor: 'grey.100',
+                      transform: 'translateY(-2px)',
+                      boxShadow: '0 12px 25px rgba(0, 0, 0, 0.25)'
+                    }
+                  }}
+                >
+                  {t('products.cta.button')}
+                </Button>
+                <Typography 
+                  variant="body2" 
+                  sx={{ 
+                    mt: 2,
+                    opacity: 0.8,
+                    fontSize: '0.9rem'
+                  }}
+                >
+                  Free consultation & quote
+                </Typography>
+              </Grid>
+            </Grid>
+          </CardContent>
+          {/* Background decorative elements */}
+          <Box
+            sx={{
               position: 'absolute',
-              right: -20,
-              bottom: -20,
-              opacity: 0.2,
-              transform: 'rotate(-15deg)'
+              top: -50,
+              right: -50,
+              width: 200,
+              height: 200,
+              borderRadius: '50%',
+              background: 'rgba(255, 255, 255, 0.05)',
+              zIndex: 1
             }}
           />
-          <Typography variant="h4" component="h2" gutterBottom>
-            {t('products.cta.title')}
-          </Typography>
-          <Typography 
-            variant="body1" 
-            sx={{ 
-              maxWidth: '600px',
-              mx: 'auto',
-              mb: 4
+          <Box
+            sx={{
+              position: 'absolute',
+              bottom: -30,
+              left: -30,
+              width: 150,
+              height: 150,
+              borderRadius: '50%',
+              background: 'rgba(255, 255, 255, 0.03)',
+              zIndex: 1
             }}
-          >
-            {t('products.cta.description')}
-          </Typography>
-          <Button
-            variant="contained"
-            color="primary"
-            size="large"
-            onClick={onQuoteClick}
-            endIcon={<ArrowForward />}
-            sx={{ 
-              px: 4,
-              py: 1.5,
-              fontSize: '1.1rem'
-            }}
-          >
-            {t('products.cta.button')}
-          </Button>
-        </Box>
+          />
+        </Card>
+
+
       </Container>
     </Box>
   );

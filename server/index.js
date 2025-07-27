@@ -167,9 +167,14 @@ app.post('/api/submit-quote', async (req, res) => {
     }
 
     // Format service type for display
-    const serviceTypeDisplay = serviceType.includes('featuredServices.') 
-      ? serviceType.replace('featuredServices.', '') 
-      : serviceType;
+    const serviceTypeMapping = {
+      'featuredServices.airConditioning': 'Air Conditioning Installation',
+      'featuredServices.veu': 'Victorian Energy Upgrades (VEU)',
+      'featuredServices.maintenance': 'Maintenance & Servicing',
+      'featuredServices.repairs': 'HVAC Repairs & Troubleshooting'
+    };
+    
+    const serviceTypeDisplay = serviceTypeMapping[serviceType] || serviceType;
 
     // Send email
     const mailOptions = {
@@ -218,14 +223,15 @@ app.post('/api/submit-quote', async (req, res) => {
             <p style="margin-bottom: 5px;"><strong>Kind regards,</strong></p>
             <p style="margin-bottom: 5px;"><strong>The DAMI AIR Team</strong></p>
             <p style="margin-bottom: 5px; color: #666;">Heating and Cooling Experts</p>
-            <p style="margin-bottom: 5px;">📞 0451028668</p>
+            <p style="margin-bottom: 5px;">📞 045 228 7883</p>
             <p style="margin-bottom: 5px;">✉️ info@damiair.com.au</p>
           </div>
           
           <div style="text-align: center; margin-top: 30px;">
-            <img src="https://damiair.com.au/wp-content/uploads/2024/01/FullLogo_Transparent_NoBuffer_NoSlogan.png" 
-                 alt="DAMI AIR Logo" 
-                 style="max-width: 200px; height: auto;">
+            <p style="font-size: 24px; font-weight: bold; color: #333; margin: 20px 0;">
+              <span style="color: #0066cc;">DAMI</span> <span style="color: #666;">AIR PTY LTD</span>
+            </p>
+            <p style="color: #666; font-size: 14px; margin: 5px 0;">Heating and Cooling Experts</p>
           </div>
         </div>
       `,

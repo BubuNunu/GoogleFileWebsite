@@ -57,7 +57,12 @@
     "cta": {
       "title": "Not Sure Which System is Right for You?",
       "description": "Our licensed specialists will assess your layout, lifestyle, and energy goals to recommend the ideal system — and help you take advantage of any available VEU rebates to reduce your installation cost.",
-      "button": "Request a Free Consultation"
+      "button": "Request a Free Consultation",
+      "badges": {
+        "licensed": "Licensed Specialists",
+        "veuRebate": "VEU Rebate Assistance",
+        "assessment": "Personalized Assessment"
+      }
     }
   },
   "about": {

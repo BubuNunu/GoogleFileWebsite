@@ -57,7 +57,12 @@
     "cta": {
       "title": "不确定哪种系统适合您？",
       "description": "我们的持证专家将评估您的布局、生活方式和能源目标，推荐最理想的系统——并帮助您利用任何可用的VEU返利来降低安装成本。",
-      "button": "申请免费咨询"
+      "button": "申请免费咨询",
+      "badges": {
+        "licensed": "持证专家",
+        "veuRebate": "VEU返利协助",
+        "assessment": "个性化评估"
+      }
     }
   },
   "about": {

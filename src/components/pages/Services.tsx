@@ -279,8 +279,13 @@ const Services: React.FC<ServicesProps> = ({ onQuoteClick }) => {
   const selectedIndex = SERVICES_DATA.findIndex(service => service.id === selectedServiceId);
 
   return (
-    <Container maxWidth="xl" disableGutters sx={{ minHeight: '100vh' }}>
-      <Box sx={{ display: 'flex', minHeight: '100vh' }}>
+    <Container maxWidth="xl" disableGutters sx={{ minHeight: '100vh', width: '100%' }}>
+      <Box sx={{ 
+        display: 'flex', 
+        minHeight: '100vh',
+        flexDirection: isMobile ? 'column' : 'row',
+        width: '100%'
+      }}>
         {/* Navigation Sidebar */}
         <Box sx={{ 
           width: isMobile ? '100%' : 280, 
@@ -291,7 +296,8 @@ const Services: React.FC<ServicesProps> = ({ onQuoteClick }) => {
           height: isMobile ? 'auto' : '100vh',
           bgcolor: 'background.paper',
           zIndex: 1,
-          boxShadow: isMobile ? 0 : 1
+          boxShadow: isMobile ? 0 : 1,
+          flexShrink: 0
         }}>
           {isMobile ? (
             <Tabs
@@ -303,25 +309,34 @@ const Services: React.FC<ServicesProps> = ({ onQuoteClick }) => {
               sx={{
                 borderBottom: 1,
                 borderColor: 'divider',
+                width: '100%',
                 '& .MuiTab-root': {
-                  fontWeight: 'bold',
-                  fontSize: '0.9rem',
+                  fontWeight: 600,
+                  fontSize: { xs: '0.8rem', sm: '0.9rem' },
                   textTransform: 'none',
-                  minHeight: '60px',
+                  minHeight: { xs: '56px', sm: '64px' },
                   display: 'flex',
                   flexDirection: 'row',
                   alignItems: 'center',
-                  justifyContent: 'flex-start'
+                  justifyContent: 'flex-start',
+                  minWidth: { xs: '120px', sm: '140px' },
+                  padding: { xs: '8px 12px', sm: '12px 16px' }
                 },
                 '& .Mui-selected': {
                   color: 'primary.main',
                 },
+                '& .MuiTab-iconWrapper': {
+                  marginRight: { xs: '4px', sm: '8px' },
+                  marginBottom: '0px'
+                }
               }}
             >
               {SERVICES_DATA.map((service) => (
                 <Tab 
                   key={service.id}
-                  icon={service.icon}
+                  icon={React.cloneElement(service.icon, { 
+                    sx: { fontSize: { xs: '18px', sm: '20px' } } 
+                  })}
                   iconPosition="start"
                   label={service.title[language]}
                   id={`tab-${service.id}`}
@@ -387,10 +402,12 @@ const Services: React.FC<ServicesProps> = ({ onQuoteClick }) => {
           component="main"
           sx={{
             flexGrow: 1,
-            p: { xs: 2, md: 4 },
+            p: { xs: 1, sm: 2, md: 4 },
             bgcolor: 'background.default',
             overflow: 'auto',
-            pt: { xs: 2, md: 2 }
+            pt: { xs: 1, sm: 2, md: 2 },
+            width: isMobile ? '100%' : 'calc(100% - 280px)',
+            maxWidth: '100%'
           }}
         >
           {/* Key is crucial here to force remount when service changes */}
@@ -398,10 +415,12 @@ const Services: React.FC<ServicesProps> = ({ onQuoteClick }) => {
             key={`service-${selectedServiceId}`}
             id={selectedService.id}
             sx={{ 
-              p: { xs: 2, md: 4 },
+              p: { xs: 1, sm: 2, md: 4 },
               scrollMarginTop: '100px',
               position: 'relative',
               minHeight: '60vh',
+              width: '100%',
+              maxWidth: '100%'
             }}
           >
             {/* Anchor for scrolling */}
@@ -412,26 +431,37 @@ const Services: React.FC<ServicesProps> = ({ onQuoteClick }) => {
             }} />
             
             <Typography variant="h3" component="h1" gutterBottom sx={{ 
-              fontSize: { xs: '2rem', md: '2.5rem' },
+              fontSize: { xs: '1.5rem', sm: '2rem', md: '2.5rem' },
               fontWeight: 'bold',
-              mb: 4
+              mb: { xs: 2, sm: 3, md: 4 },
+              lineHeight: 1.2,
+              wordBreak: 'break-word'
             }}>
               {selectedService.title[language]}
             </Typography>
             
-            <Typography variant="body1" paragraph sx={{ mb: 4, fontSize: '1.1rem' }}>
+            <Typography variant="body1" paragraph sx={{ 
+              mb: { xs: 3, sm: 4, md: 4 }, 
+              fontSize: { xs: '1rem', sm: '1.05rem', md: '1.1rem' },
+              lineHeight: 1.6,
+              color: 'text.secondary'
+            }}>
               {selectedService.description[language]}
             </Typography>
 
-            <Typography variant="h5" gutterBottom sx={{ mb: 3, fontWeight: 'bold' }}>
+            <Typography variant="h5" gutterBottom sx={{ 
+              mb: { xs: 2, sm: 3, md: 3 }, 
+              fontWeight: 'bold',
+              fontSize: { xs: '1.25rem', sm: '1.5rem', md: '1.75rem' }
+            }}>
               {language === 'en' ? 'What We Offer:' : '我们提供的服务:'}
             </Typography>
 
-            <Grid container spacing={3}>
+            <Grid container spacing={{ xs: 2, sm: 3, md: 3 }}>
               {selectedService.details[language].map((detail, index) => (
-                <Grid item xs={12} md={6} key={`${selectedServiceId}-detail-${index}`}>
+                <Grid item xs={12} sm={6} md={6} key={`${selectedServiceId}-detail-${index}`}>
                   <Paper elevation={2} sx={{ 
-                    p: 3,
+                    p: { xs: 2, sm: 2.5, md: 3 },
                     height: '100%',
                     transition: 'transform 0.2s, box-shadow 0.2s',
                     '&:hover': {
@@ -439,7 +469,10 @@ const Services: React.FC<ServicesProps> = ({ onQuoteClick }) => {
                       boxShadow: 4
                     }
                   }}>
-                    <Typography variant="body1">
+                    <Typography variant="body1" sx={{
+                      fontSize: { xs: '0.95rem', sm: '1rem', md: '1rem' },
+                      lineHeight: 1.6
+                    }}>
                       {detail}
                     </Typography>
                   </Paper>
@@ -447,16 +480,23 @@ const Services: React.FC<ServicesProps> = ({ onQuoteClick }) => {
               ))}
             </Grid>
 
-            <Box sx={{ mt: 6, textAlign: 'center' }}>
+            <Box sx={{ 
+              mt: { xs: 4, sm: 5, md: 6 }, 
+              textAlign: 'center',
+              width: '100%'
+            }}>
               <Button
                 variant="contained"
                 color="primary"
                 size="large"
                 onClick={onQuoteClick}
                 sx={{ 
-                  px: 4,
-                  py: 1.5,
-                  fontSize: '1.1rem'
+                  px: { xs: 3, sm: 4, md: 4 },
+                  py: { xs: 1.2, sm: 1.5, md: 1.5 },
+                  fontSize: { xs: '1rem', sm: '1.05rem', md: '1.1rem' },
+                  fontWeight: 600,
+                  borderRadius: 2,
+                  minWidth: { xs: '200px', sm: '220px' }
                 }}
               >
                 {language === 'en' ? 'Get a Quote' : '获取报价'}
